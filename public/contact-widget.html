@@ -1,0 +1,104 @@
+<!--
+  Made Interiors Contact Widget
+  Add this to your website to auto-capture leads
+
+  Usage: Copy this code into your website HTML
+-->
+
+<div id="made-interiors-contact" style="max-width: 400px; margin: 0 auto; font-family: Arial, sans-serif;">
+  <form id="contactForm" style="background: #fff; padding: 30px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.1);">
+    <h3 style="margin: 0 0 20px; color: #1a1a2e; font-size: 24px;">Get Free Consultation</h3>
+
+    <div style="margin-bottom: 15px;">
+      <input
+        type="text"
+        name="name"
+        placeholder="Your Name *"
+        required
+        style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; font-size: 16px; box-sizing: border-box;"
+      />
+    </div>
+
+    <div style="margin-bottom: 15px;">
+      <input
+        type="email"
+        name="email"
+        placeholder="Email Address *"
+        required
+        style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; font-size: 16px; box-sizing: border-box;"
+      />
+    </div>
+
+    <div style="margin-bottom: 15px;">
+      <input
+        type="tel"
+        name="phone"
+        placeholder="Phone Number"
+        style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; font-size: 16px; box-sizing: border-box;"
+      />
+    </div>
+
+    <div style="margin-bottom: 20px;">
+      <textarea
+        name="message"
+        placeholder="Tell us about your project..."
+        rows="3"
+        style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; font-size: 16px; resize: vertical; box-sizing: border-box;"
+      ></textarea>
+    </div>
+
+    <button
+      type="submit"
+      style="width: 100%; padding: 15px; background: #c9a962; color: #1a1a2e; border: none; border-radius: 8px; font-size: 16px; font-weight: bold; cursor: pointer;"
+    >
+      Request Free Quote
+    </button>
+
+    <p style="margin: 15px 0 0; font-size: 12px; color: #666; text-align: center;">
+      We'll respond within 24 hours
+    </p>
+  </form>
+
+  <div id="successMessage" style="display: none; background: #d4edda; padding: 20px; border-radius: 8px; text-align: center;">
+    <h3 style="color: #155724; margin: 0 0 10px;">Thank You!</h3>
+    <p style="color: #155724; margin: 0;">We'll contact you shortly.</p>
+  </div>
+</div>
+
+<script>
+  // Replace with your deployed URL
+  const API_URL = 'YOUR_VERCEL_URL/api/contact-form';
+  // Example: 'https://made-interiors-marketing.vercel.app/api/contact-form'
+
+  document.getElementById('contactForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+
+    const formData = new FormData(this);
+    const data = {
+      name: formData.get('name'),
+      email: formData.get('email'),
+      phone: formData.get('phone'),
+      message: formData.get('message'),
+      source: 'website',
+    };
+
+    try {
+      const response = await fetch(API_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        document.getElementById('contactForm').style.display = 'none';
+        document.getElementById('successMessage').style.display = 'block';
+      } else {
+        alert('Error: ' + result.error);
+      }
+    } catch (error) {
+      alert('Error submitting form. Please try again.');
+    }
+  });
+</script>
