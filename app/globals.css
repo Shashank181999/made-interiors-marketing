@@ -3,8 +3,8 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-rgb: 249, 250, 251;
+  --foreground-rgb: 255, 255, 255;
+  --background-rgb: 0, 0, 0;
 }
 
 body {
@@ -19,16 +19,16 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #f1f1f1;
+  background: #1a1a1a;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #c9a962;
+  background: #444444;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #b8944d;
+  background: #666666;
 }
 
 /* Animation for stats */
@@ -49,25 +49,159 @@ body {
 
 /* Status badges */
 .status-pending {
-  @apply bg-yellow-100 text-yellow-800;
+  @apply bg-yellow-300 text-yellow-900;
 }
 
 .status-sent {
-  @apply bg-blue-100 text-blue-800;
+  @apply bg-blue-300 text-blue-900;
 }
 
 .status-opened {
-  @apply bg-green-100 text-green-800;
+  @apply bg-green-300 text-green-900;
 }
 
 .status-clicked {
-  @apply bg-purple-100 text-purple-800;
+  @apply bg-purple-300 text-purple-900;
 }
 
 .status-replied {
-  @apply bg-emerald-100 text-emerald-800;
+  @apply bg-emerald-300 text-emerald-900;
 }
 
 .status-cold {
-  @apply bg-gray-100 text-gray-800;
+  @apply bg-gray-300 text-gray-900;
+}
+
+/* Global Dark Theme */
+.bg-white {
+  background-color: #1a1a1a !important;
+}
+
+.bg-gray-50 {
+  background-color: #111111 !important;
+}
+
+.bg-gray-100 {
+  background-color: #222222 !important;
+}
+
+.bg-gray-200 {
+  background-color: #2a2a2a !important;
+}
+
+.text-gray-900 {
+  color: #ffffff !important;
+}
+
+.text-gray-800 {
+  color: #f5f5f5 !important;
+}
+
+.text-gray-700 {
+  color: #e5e5e5 !important;
+}
+
+.text-gray-600 {
+  color: #d4d4d4 !important;
+}
+
+.text-gray-500 {
+  color: #a3a3a3 !important;
+}
+
+.text-gray-400 {
+  color: #737373 !important;
+}
+
+.text-gray-300 {
+  color: #525252 !important;
+}
+
+.border-gray-100 {
+  border-color: #2a2a2a !important;
+}
+
+.border-gray-200 {
+  border-color: #333333 !important;
+}
+
+.border-gray-300 {
+  border-color: #404040 !important;
+}
+
+/* Input styling */
+input, select, textarea {
+  background-color: #2a2a2a !important;
+  color: #ffffff !important;
+  border-color: #404040 !important;
+}
+
+input::placeholder, textarea::placeholder {
+  color: #737373 !important;
+}
+
+input:focus, select:focus, textarea:focus {
+  border-color: #ea1515 !important;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(234, 21, 21, 0.2) !important;
+}
+
+/* Table styling */
+table {
+  color: white;
+}
+
+thead {
+  background-color: #1a1a1a !important;
+}
+
+tbody tr:hover {
+  background-color: #222222 !important;
+}
+
+/* Divide colors */
+.divide-gray-100 > * + * {
+  border-color: #2a2a2a !important;
+}
+
+/* Shadow adjustments */
+.shadow-sm {
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.5) !important;
+}
+
+/* Hover states */
+.hover\:bg-gray-50:hover {
+  background-color: #222222 !important;
+}
+
+.hover\:bg-gray-100:hover {
+  background-color: #2a2a2a !important;
+}
+
+/* Modal backgrounds */
+.bg-black.bg-opacity-50 {
+  background-color: rgba(0, 0, 0, 0.8) !important;
+}
+
+/* Links */
+a {
+  color: inherit;
+}
+
+/* Red accent for buttons and highlights */
+.bg-secondary {
+  background-color: #ea1515 !important;
+}
+
+.text-secondary {
+  color: #ea1515 !important;
+}
+
+/* Gradient overrides */
+.from-primary {
+  --tw-gradient-from: #1a1a1a !important;
+}
+
+.to-accent {
+  --tw-gradient-to: #2a2a2a !important;
 }

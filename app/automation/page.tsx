@@ -4,52 +4,8 @@ import { useState } from 'react';
 import { Zap, Play, Pause, Plus, Clock, Mail, Bell, Trash2 } from 'lucide-react';
 import type { AutomationRule } from '@/types';
 
-const initialRules: AutomationRule[] = [
-  {
-    id: '1',
-    name: 'Welcome New Leads',
-    trigger: 'new_lead',
-    action: 'send_email',
-    template_id: 'welcome',
-    is_active: true,
-    created_at: '2024-01-01T00:00:00Z',
-  },
-  {
-    id: '2',
-    name: 'Follow-up After 3 Days',
-    trigger: 'no_open_3_days',
-    action: 'send_email',
-    template_id: 'follow_up_1',
-    is_active: true,
-    created_at: '2024-01-01T00:00:00Z',
-  },
-  {
-    id: '3',
-    name: 'Portfolio for Interested Leads',
-    trigger: 'opened_no_click',
-    action: 'send_email',
-    template_id: 'portfolio',
-    is_active: true,
-    created_at: '2024-01-01T00:00:00Z',
-  },
-  {
-    id: '4',
-    name: 'Final Follow-up',
-    trigger: 'no_reply_5_days',
-    action: 'send_email',
-    template_id: 'follow_up_2',
-    is_active: true,
-    created_at: '2024-01-01T00:00:00Z',
-  },
-  {
-    id: '5',
-    name: 'Mark Cold After No Response',
-    trigger: 'no_reply_5_days',
-    action: 'mark_cold',
-    is_active: false,
-    created_at: '2024-01-01T00:00:00Z',
-  },
-];
+// Start with empty automation rules
+const initialRules: AutomationRule[] = [];
 
 const triggerDescriptions: Record<string, { label: string; description: string; icon: any }> = {
   new_lead: {

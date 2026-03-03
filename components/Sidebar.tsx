@@ -13,6 +13,7 @@ import {
   TrendingUp,
   Search,
   Eye,
+  Database,
 } from 'lucide-react';
 
 const navigation = [
@@ -24,6 +25,7 @@ const navigation = [
   { name: 'Preview Email', href: '/preview-email', icon: Eye },
   { name: 'Automation', href: '/automation', icon: Zap },
   { name: 'Analytics', href: '/analytics', icon: TrendingUp },
+  { name: 'Optimize', href: '/optimize', icon: Database },
   { name: 'Settings', href: '/settings', icon: Settings },
 ];
 
@@ -31,9 +33,9 @@ export default function Sidebar() {
   const pathname = usePathname();
 
   return (
-    <div className="w-64 bg-primary text-white flex flex-col">
+    <div className="w-64 bg-zinc-900 text-white flex flex-col">
       {/* Logo */}
-      <div className="p-6 border-b border-gray-700">
+      <div className="p-6 border-b border-zinc-800">
         <div className="flex items-center justify-center">
           <Image
             src="/made-CPWcAThC.svg"
@@ -43,7 +45,7 @@ export default function Sidebar() {
             priority
           />
         </div>
-        <p className="text-xs text-gray-400 mt-3 text-center">Marketing Automation</p>
+        <p className="text-xs text-zinc-500 mt-3 text-center">Marketing Automation</p>
       </div>
 
       {/* Navigation */}
@@ -57,8 +59,8 @@ export default function Sidebar() {
                   href={item.href}
                   className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-colors ${
                     isActive
-                      ? 'bg-secondary text-primary font-medium'
-                      : 'text-gray-300 hover:bg-gray-700 hover:text-white'
+                      ? 'bg-red-500 text-white font-medium'
+                      : 'text-zinc-400 hover:bg-zinc-800 hover:text-white'
                   }`}
                 >
                   <item.icon className="w-5 h-5" />
@@ -71,10 +73,10 @@ export default function Sidebar() {
       </nav>
 
       {/* Status */}
-      <div className="p-4 border-t border-gray-700">
+      <div className="p-4 border-t border-zinc-800">
         <div className="flex items-center gap-2 text-sm">
           <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
-          <span className="text-gray-400">Automation Active</span>
+          <span className="text-zinc-400">Automation Active</span>
         </div>
       </div>
     </div>

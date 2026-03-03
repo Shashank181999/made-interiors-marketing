@@ -2,40 +2,36 @@
 
 import { useState } from 'react';
 import {
-  TrendingUp,
   Users,
   Mail,
   MousePointer,
   MessageSquare,
-  Calendar,
-  ArrowUpRight,
-  ArrowDownRight,
 } from 'lucide-react';
 
-// Demo analytics data
+// Empty analytics data - will be populated from real data
 const weeklyData = [
-  { day: 'Mon', leads: 5, emails: 20, opens: 8, clicks: 3, replies: 1 },
-  { day: 'Tue', leads: 8, emails: 25, opens: 10, clicks: 4, replies: 2 },
-  { day: 'Wed', leads: 3, emails: 15, opens: 6, clicks: 2, replies: 0 },
-  { day: 'Thu', leads: 10, emails: 30, opens: 12, clicks: 5, replies: 2 },
-  { day: 'Fri', leads: 7, emails: 22, opens: 9, clicks: 3, replies: 1 },
-  { day: 'Sat', leads: 2, emails: 8, opens: 3, clicks: 1, replies: 0 },
-  { day: 'Sun', leads: 1, emails: 5, opens: 2, clicks: 0, replies: 0 },
+  { day: 'Mon', leads: 0, emails: 0, opens: 0, clicks: 0, replies: 0 },
+  { day: 'Tue', leads: 0, emails: 0, opens: 0, clicks: 0, replies: 0 },
+  { day: 'Wed', leads: 0, emails: 0, opens: 0, clicks: 0, replies: 0 },
+  { day: 'Thu', leads: 0, emails: 0, opens: 0, clicks: 0, replies: 0 },
+  { day: 'Fri', leads: 0, emails: 0, opens: 0, clicks: 0, replies: 0 },
+  { day: 'Sat', leads: 0, emails: 0, opens: 0, clicks: 0, replies: 0 },
+  { day: 'Sun', leads: 0, emails: 0, opens: 0, clicks: 0, replies: 0 },
 ];
 
 const sourceData = [
-  { source: 'LinkedIn', leads: 45, percentage: 35 },
-  { source: 'Google Maps', leads: 32, percentage: 25 },
-  { source: 'Website', leads: 28, percentage: 22 },
-  { source: 'Instagram', leads: 15, percentage: 12 },
-  { source: 'Manual', leads: 8, percentage: 6 },
+  { source: 'LinkedIn', leads: 0, percentage: 0 },
+  { source: 'Google Maps', leads: 0, percentage: 0 },
+  { source: 'Website', leads: 0, percentage: 0 },
+  { source: 'Instagram', leads: 0, percentage: 0 },
+  { source: 'Manual', leads: 0, percentage: 0 },
 ];
 
 const topPerformingEmails = [
-  { template: 'Welcome Email', sent: 150, openRate: 45, clickRate: 18, replyRate: 6 },
-  { template: 'Portfolio Showcase', sent: 120, openRate: 38, clickRate: 15, replyRate: 4 },
-  { template: 'Special Offer', sent: 100, openRate: 52, clickRate: 22, replyRate: 8 },
-  { template: 'Follow-up #1', sent: 80, openRate: 28, clickRate: 10, replyRate: 3 },
+  { template: 'Welcome Email', sent: 0, openRate: 0, clickRate: 0, replyRate: 0 },
+  { template: 'Portfolio Showcase', sent: 0, openRate: 0, clickRate: 0, replyRate: 0 },
+  { template: 'Special Offer', sent: 0, openRate: 0, clickRate: 0, replyRate: 0 },
+  { template: 'Follow-up #1', sent: 0, openRate: 0, clickRate: 0, replyRate: 0 },
 ];
 
 export default function AnalyticsPage() {
@@ -68,45 +64,29 @@ export default function AnalyticsPage() {
         <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
           <div className="flex items-center justify-between mb-4">
             <Users className="w-8 h-8 text-blue-500" />
-            <span className="text-xs flex items-center text-green-600">
-              <ArrowUpRight className="w-3 h-3" />
-              +12%
-            </span>
           </div>
-          <p className="text-2xl font-bold text-gray-900">127</p>
+          <p className="text-2xl font-bold text-gray-900">0</p>
           <p className="text-sm text-gray-500">Total Leads</p>
         </div>
         <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
           <div className="flex items-center justify-between mb-4">
             <Mail className="w-8 h-8 text-purple-500" />
-            <span className="text-xs flex items-center text-green-600">
-              <ArrowUpRight className="w-3 h-3" />
-              +8%
-            </span>
           </div>
-          <p className="text-2xl font-bold text-gray-900">458</p>
+          <p className="text-2xl font-bold text-gray-900">0</p>
           <p className="text-sm text-gray-500">Emails Sent</p>
         </div>
         <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
           <div className="flex items-center justify-between mb-4">
             <MousePointer className="w-8 h-8 text-green-500" />
-            <span className="text-xs flex items-center text-red-600">
-              <ArrowDownRight className="w-3 h-3" />
-              -2%
-            </span>
           </div>
-          <p className="text-2xl font-bold text-gray-900">32.5%</p>
+          <p className="text-2xl font-bold text-gray-900">0%</p>
           <p className="text-sm text-gray-500">Open Rate</p>
         </div>
         <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
           <div className="flex items-center justify-between mb-4">
             <MessageSquare className="w-8 h-8 text-secondary" />
-            <span className="text-xs flex items-center text-green-600">
-              <ArrowUpRight className="w-3 h-3" />
-              +15%
-            </span>
           </div>
-          <p className="text-2xl font-bold text-gray-900">4.2%</p>
+          <p className="text-2xl font-bold text-gray-900">0%</p>
           <p className="text-sm text-gray-500">Reply Rate</p>
         </div>
       </div>
@@ -217,34 +197,34 @@ export default function AnalyticsPage() {
         <div className="flex items-center justify-between gap-4">
           <div className="flex-1 text-center">
             <div className="bg-blue-100 rounded-lg p-6 mb-2">
-              <p className="text-3xl font-bold text-blue-800">458</p>
+              <p className="text-3xl font-bold text-blue-800">0</p>
             </div>
             <p className="text-sm text-gray-600">Emails Sent</p>
-            <p className="text-xs text-gray-400">100%</p>
+            <p className="text-xs text-gray-400">0%</p>
           </div>
           <div className="text-2xl text-gray-300">→</div>
           <div className="flex-1 text-center">
             <div className="bg-green-100 rounded-lg p-6 mb-2">
-              <p className="text-3xl font-bold text-green-800">149</p>
+              <p className="text-3xl font-bold text-green-800">0</p>
             </div>
             <p className="text-sm text-gray-600">Opened</p>
-            <p className="text-xs text-gray-400">32.5%</p>
+            <p className="text-xs text-gray-400">0%</p>
           </div>
           <div className="text-2xl text-gray-300">→</div>
           <div className="flex-1 text-center">
             <div className="bg-purple-100 rounded-lg p-6 mb-2">
-              <p className="text-3xl font-bold text-purple-800">59</p>
+              <p className="text-3xl font-bold text-purple-800">0</p>
             </div>
             <p className="text-sm text-gray-600">Clicked</p>
-            <p className="text-xs text-gray-400">12.9%</p>
+            <p className="text-xs text-gray-400">0%</p>
           </div>
           <div className="text-2xl text-gray-300">→</div>
           <div className="flex-1 text-center">
             <div className="bg-secondary/20 rounded-lg p-6 mb-2">
-              <p className="text-3xl font-bold text-primary">19</p>
+              <p className="text-3xl font-bold text-primary">0</p>
             </div>
             <p className="text-sm text-gray-600">Replied</p>
-            <p className="text-xs text-gray-400">4.1%</p>
+            <p className="text-xs text-gray-400">0%</p>
           </div>
         </div>
       </div>

@@ -16,62 +16,8 @@ import {
 import type { Campaign } from '@/types';
 import { defaultTemplates } from '@/lib/templates';
 
-// Demo campaigns
-const initialCampaigns: Campaign[] = [
-  {
-    id: '1',
-    name: 'LinkedIn Outreach Q1 2024',
-    subject: 'Transform Your Space with Made Interiors Dubai',
-    template_id: 'welcome',
-    status: 'active',
-    leads_count: 50,
-    sent_count: 45,
-    opened_count: 15,
-    clicked_count: 5,
-    replied_count: 2,
-    created_at: '2024-01-01T00:00:00Z',
-    scheduled_at: '2024-01-15T06:00:00Z',
-  },
-  {
-    id: '2',
-    name: 'Portfolio Showcase Campaign',
-    subject: 'See Our Latest Interior Design Projects in Dubai',
-    template_id: 'portfolio',
-    status: 'active',
-    leads_count: 35,
-    sent_count: 30,
-    opened_count: 12,
-    clicked_count: 4,
-    replied_count: 1,
-    created_at: '2024-01-05T00:00:00Z',
-  },
-  {
-    id: '3',
-    name: 'Follow-up Sequence',
-    subject: 'Quick question about your interior project',
-    template_id: 'follow_up_1',
-    status: 'paused',
-    leads_count: 25,
-    sent_count: 20,
-    opened_count: 8,
-    clicked_count: 2,
-    replied_count: 0,
-    created_at: '2024-01-10T00:00:00Z',
-  },
-  {
-    id: '4',
-    name: 'New Year Special Offer',
-    subject: 'Exclusive: 15% Off Interior Design Services',
-    template_id: 'special_offer',
-    status: 'completed',
-    leads_count: 100,
-    sent_count: 100,
-    opened_count: 35,
-    clicked_count: 12,
-    replied_count: 5,
-    created_at: '2024-01-01T00:00:00Z',
-  },
-];
+// Start with empty campaigns
+const initialCampaigns: Campaign[] = [];
 
 export default function CampaignsPage() {
   const [campaigns, setCampaigns] = useState<Campaign[]>(initialCampaigns);

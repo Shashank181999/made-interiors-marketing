@@ -142,10 +142,10 @@ export default function ScrapingPage() {
             <button
               key={cat.id}
               onClick={() => setSelectedCategory(cat.id)}
-              className={`flex items-center gap-3 p-4 rounded-lg border transition-all ${
+              className={`flex items-center gap-3 p-4 rounded-xl transition-all ${
                 selectedCategory === cat.id
-                  ? 'border-secondary bg-secondary/10 text-primary'
-                  : 'border-gray-200 hover:border-secondary hover:bg-gray-50'
+                  ? 'bg-red-500 text-white border-2 border-red-500 shadow-lg'
+                  : 'bg-zinc-800 text-gray-300 border-2 border-zinc-700'
               }`}
             >
               <cat.icon className="w-5 h-5" />

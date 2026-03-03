@@ -34,8 +34,8 @@ export const defaultTemplates = [
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Welcome to Made Interiors</title>
 </head>
-<body style="margin: 0; padding: 0; font-family: 'Helvetica Neue', Arial, sans-serif; background-color: #f8f9fa;">
-  <table width="100%" cellpadding="0" cellspacing="0" style="background-color: #f8f9fa; padding: 40px 20px;">
+<body style="margin: 0; padding: 0; font-family: 'Helvetica Neue', Arial, sans-serif; background-color: #000000;">
+  <table width="100%" cellpadding="0" cellspacing="0" style="background-color: #000000; padding: 40px 20px;">
     <tr>
       <td align="center">
         <table width="600" cellpadding="0" cellspacing="0" style="background-color: #ffffff; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 24px rgba(0,0,0,0.08);">
@@ -103,10 +103,10 @@ export const defaultTemplates = [
 
           <!-- Footer -->
           <tr>
-            <td style="background-color: #1a1a2e; padding: 40px; text-align: center;">
+            <td style="background-color: #000000; padding: 40px; text-align: center;">
               ${LOGO_HTML_SMALL}
               <p style="margin: 20px 0; color: #888888; font-size: 13px;">Dubai Design District, Dubai, UAE</p>
-              <p style="margin: 0 0 15px; color: #666666; font-size: 11px;">© 2024 Made Interiors. All rights reserved.</p>
+              <p style="margin: 0 0 15px; color: #cccccc; font-size: 11px;">© 2024 Made Interiors. All rights reserved.</p>
               <a href="${WEBSITE_URL}/unsubscribe" style="color: #888888; font-size: 11px; text-decoration: underline;">Unsubscribe from emails</a>
             </td>
           </tr>
@@ -131,15 +131,15 @@ export const defaultTemplates = [
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
-<body style="margin: 0; padding: 0; font-family: 'Helvetica Neue', Arial, sans-serif; background-color: #f8f9fa;">
-  <table width="100%" cellpadding="0" cellspacing="0" style="background-color: #f8f9fa; padding: 40px 20px;">
+<body style="margin: 0; padding: 0; font-family: 'Helvetica Neue', Arial, sans-serif; background-color: #000000;">
+  <table width="100%" cellpadding="0" cellspacing="0" style="background-color: #000000; padding: 40px 20px;">
     <tr>
       <td align="center">
         <table width="600" cellpadding="0" cellspacing="0" style="background-color: #ffffff; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 24px rgba(0,0,0,0.08);">
 
           <!-- Header with Logo -->
           <tr>
-            <td style="background: #1a1a2e; padding: 30px 40px; text-align: center;">
+            <td style="background: #000000; padding: 30px 40px; text-align: center;">
               ${LOGO_HTML}
             </td>
           </tr>
@@ -194,10 +194,10 @@ export const defaultTemplates = [
 
           <!-- Footer -->
           <tr>
-            <td style="background-color: #1a1a2e; padding: 30px; text-align: center;">
+            <td style="background-color: #000000; padding: 30px; text-align: center;">
               ${LOGO_HTML_SMALL}
               <p style="margin: 15px 0; color: #888888; font-size: 12px;">Made Interiors | Dubai, UAE</p>
-              <a href="${WEBSITE_URL}/unsubscribe" style="color: #666666; font-size: 11px; text-decoration: underline;">Unsubscribe</a>
+              <a href="${WEBSITE_URL}/unsubscribe" style="color: #cccccc; font-size: 11px; text-decoration: underline;">Unsubscribe</a>
             </td>
           </tr>
 
@@ -221,8 +221,8 @@ export const defaultTemplates = [
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
-<body style="margin: 0; padding: 0; font-family: 'Helvetica Neue', Arial, sans-serif; background-color: #f8f9fa;">
-  <table width="100%" cellpadding="0" cellspacing="0" style="background-color: #f8f9fa; padding: 40px 20px;">
+<body style="margin: 0; padding: 0; font-family: 'Helvetica Neue', Arial, sans-serif; background-color: #000000;">
+  <table width="100%" cellpadding="0" cellspacing="0" style="background-color: #000000; padding: 40px 20px;">
     <tr>
       <td align="center">
         <table width="600" cellpadding="0" cellspacing="0" style="background-color: #ffffff; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 24px rgba(0,0,0,0.08);">
@@ -291,7 +291,7 @@ export const defaultTemplates = [
               <table width="100%" cellpadding="0" cellspacing="0">
                 <tr>
                   <td align="center">
-                    <a href="${WEBSITE_URL}" style="display: inline-block; background: #1a1a2e; color: #ffffff; text-decoration: none; padding: 16px 40px; border-radius: 30px; font-size: 14px; font-weight: 500;">
+                    <a href="${WEBSITE_URL}" style="display: inline-block; background: #000000; color: #ffffff; text-decoration: none; padding: 16px 40px; border-radius: 30px; font-size: 14px; font-weight: 500;">
                       Book Free Consultation
                     </a>
                   </td>
@@ -307,9 +307,9 @@ export const defaultTemplates = [
 
           <!-- Footer -->
           <tr>
-            <td style="background-color: #f8f9fa; padding: 25px; text-align: center; border-top: 1px solid #eee;">
-              <p style="margin: 0 0 10px; color: #999999; font-size: 12px;">Made Interiors | Dubai Design District, UAE</p>
-              <a href="${WEBSITE_URL}/unsubscribe" style="color: #999999; font-size: 11px; text-decoration: underline;">Unsubscribe</a>
+            <td style="background-color: #000000; padding: 25px; text-align: center; border-top: 1px solid #eee;">
+              <p style="margin: 0 0 10px; color: #ffffff; font-size: 12px;">Made Interiors | Dubai Design District, UAE</p>
+              <a href="${WEBSITE_URL}/unsubscribe" style="color: #ffffff; font-size: 11px; text-decoration: underline;">Unsubscribe</a>
             </td>
           </tr>
 
@@ -333,8 +333,8 @@ export const defaultTemplates = [
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
-<body style="margin: 0; padding: 0; font-family: 'Helvetica Neue', Arial, sans-serif; background-color: #f8f9fa;">
-  <table width="100%" cellpadding="0" cellspacing="0" style="background-color: #f8f9fa; padding: 40px 20px;">
+<body style="margin: 0; padding: 0; font-family: 'Helvetica Neue', Arial, sans-serif; background-color: #000000;">
+  <table width="100%" cellpadding="0" cellspacing="0" style="background-color: #000000; padding: 40px 20px;">
     <tr>
       <td align="center">
         <table width="600" cellpadding="0" cellspacing="0" style="background-color: #ffffff; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 24px rgba(0,0,0,0.08);">
@@ -392,10 +392,10 @@ export const defaultTemplates = [
 
           <!-- Footer -->
           <tr>
-            <td style="background-color: #f8f9fa; padding: 25px; text-align: center; border-top: 1px solid #eee;">
-              <p style="margin: 0 0 5px; color: #999999; font-size: 11px;">We won't email you again unless you reach out.</p>
-              <p style="margin: 0 0 10px; color: #bbbbbb; font-size: 11px;">Made Interiors | Dubai, UAE</p>
-              <a href="${WEBSITE_URL}/unsubscribe" style="color: #999999; font-size: 11px; text-decoration: underline;">Unsubscribe</a>
+            <td style="background-color: #000000; padding: 25px; text-align: center; border-top: 1px solid #eee;">
+              <p style="margin: 0 0 5px; color: #ffffff; font-size: 11px;">We won't email you again unless you reach out.</p>
+              <p style="margin: 0 0 10px; color: #ffffff; font-size: 11px;">Made Interiors | Dubai, UAE</p>
+              <a href="${WEBSITE_URL}/unsubscribe" style="color: #ffffff; font-size: 11px; text-decoration: underline;">Unsubscribe</a>
             </td>
           </tr>
 
@@ -419,8 +419,8 @@ export const defaultTemplates = [
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
-<body style="margin: 0; padding: 0; font-family: 'Helvetica Neue', Arial, sans-serif; background-color: #f8f9fa;">
-  <table width="100%" cellpadding="0" cellspacing="0" style="background-color: #f8f9fa; padding: 40px 20px;">
+<body style="margin: 0; padding: 0; font-family: 'Helvetica Neue', Arial, sans-serif; background-color: #000000;">
+  <table width="100%" cellpadding="0" cellspacing="0" style="background-color: #000000; padding: 40px 20px;">
     <tr>
       <td align="center">
         <table width="600" cellpadding="0" cellspacing="0" style="background-color: #ffffff; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 24px rgba(0,0,0,0.08);">
@@ -505,7 +505,7 @@ export const defaultTemplates = [
               <table width="100%" cellpadding="0" cellspacing="0">
                 <tr>
                   <td align="center">
-                    <a href="${WEBSITE_URL}" style="display: inline-block; background: #1a1a2e; color: #c9a962; text-decoration: none; padding: 18px 50px; border-radius: 30px; font-size: 14px; font-weight: 600; letter-spacing: 1px;">
+                    <a href="${WEBSITE_URL}" style="display: inline-block; background: #000000; color: #c9a962; text-decoration: none; padding: 18px 50px; border-radius: 30px; font-size: 14px; font-weight: 600; letter-spacing: 1px;">
                       CLAIM YOUR DISCOUNT
                     </a>
                   </td>
@@ -516,10 +516,10 @@ export const defaultTemplates = [
 
           <!-- Footer -->
           <tr>
-            <td style="background-color: #1a1a2e; padding: 30px; text-align: center;">
+            <td style="background-color: #000000; padding: 30px; text-align: center;">
               ${LOGO_HTML_SMALL}
-              <p style="margin: 15px 0; color: #666666; font-size: 11px;">Dubai Design District, Dubai, UAE</p>
-              <a href="${WEBSITE_URL}/unsubscribe" style="color: #666666; font-size: 11px; text-decoration: underline;">Unsubscribe</a>
+              <p style="margin: 15px 0; color: #cccccc; font-size: 11px;">Dubai Design District, Dubai, UAE</p>
+              <a href="${WEBSITE_URL}/unsubscribe" style="color: #cccccc; font-size: 11px; text-decoration: underline;">Unsubscribe</a>
             </td>
           </tr>
 

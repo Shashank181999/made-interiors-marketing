@@ -43,7 +43,7 @@ export default function TemplatesPage() {
           <h1 className="text-3xl font-bold text-gray-900">Email Templates</h1>
           <p className="text-gray-600 mt-1">Pre-built email templates for your campaigns</p>
         </div>
-        <button className="flex items-center gap-2 px-4 py-2 bg-secondary text-primary font-medium rounded-lg hover:bg-opacity-90 transition-colors">
+        <button className="flex items-center gap-2 px-4 py-2 bg-secondary text-white font-medium rounded-lg">
           <Plus className="w-4 h-4" />
           Create Template
         </button>
@@ -54,7 +54,7 @@ export default function TemplatesPage() {
         {templates.map((template) => (
           <div
             key={template.id}
-            className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition-shadow"
+            className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden"
           >
             {/* Preview thumbnail */}
             <div className="h-40 bg-gradient-to-br from-primary to-accent p-4 flex items-center justify-center">
@@ -73,23 +73,23 @@ export default function TemplatesPage() {
               <div className="flex items-center gap-2">
                 <button
                   onClick={() => handlePreview(template)}
-                  className="flex-1 flex items-center justify-center gap-2 px-3 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors text-sm"
+                  className="flex-1 flex items-center justify-center gap-2 px-3 py-2 bg-red-500 text-white rounded-lg text-sm font-medium"
                 >
                   <Eye className="w-4 h-4" />
                   Preview
                 </button>
                 <button
                   onClick={() => handleDuplicate(template)}
-                  className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
+                  className="p-2 bg-zinc-700 rounded-lg"
                   title="Duplicate"
                 >
-                  <Copy className="w-4 h-4 text-gray-600" />
+                  <Copy className="w-4 h-4 text-white" />
                 </button>
                 <button
-                  className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
+                  className="p-2 bg-zinc-700 rounded-lg"
                   title="Edit"
                 >
-                  <Edit className="w-4 h-4 text-gray-600" />
+                  <Edit className="w-4 h-4 text-white" />
                 </button>
               </div>
             </div>
@@ -108,7 +108,7 @@ export default function TemplatesPage() {
               </div>
               <button
                 onClick={() => setShowPreview(false)}
-                className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
+                className="p-2 bg-zinc-700 rounded-lg text-white"
               >
                 ✕
               </button>
@@ -122,11 +122,11 @@ export default function TemplatesPage() {
             <div className="p-4 border-t border-gray-100 flex justify-end gap-3">
               <button
                 onClick={() => setShowPreview(false)}
-                className="px-4 py-2 text-gray-600 hover:text-gray-900"
+                className="px-4 py-2 text-white bg-zinc-700 rounded-lg"
               >
                 Close
               </button>
-              <button className="px-4 py-2 bg-secondary text-primary font-medium rounded-lg hover:bg-opacity-90">
+              <button className="px-4 py-2 bg-red-500 text-white font-medium rounded-lg">
                 Use Template
               </button>
             </div>
