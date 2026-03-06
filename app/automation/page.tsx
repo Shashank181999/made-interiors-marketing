@@ -79,16 +79,16 @@ export default function AutomationPage() {
   };
 
   return (
-    <div className="p-8">
+    <div className="p-4 sm:p-6 lg:p-8">
       {/* Header */}
-      <div className="flex items-center justify-between mb-8">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 lg:mb-8">
         <div>
-          <h1 className="text-3xl font-bold text-gray-900">Automation</h1>
-          <p className="text-gray-600 mt-1">Set up automatic email sequences and actions</p>
+          <h1 className="text-2xl sm:text-3xl font-bold text-gray-900">Automation</h1>
+          <p className="text-gray-600 mt-1 text-sm sm:text-base">Set up automatic email sequences and actions</p>
         </div>
         <button
           onClick={() => setShowCreateModal(true)}
-          className="flex items-center gap-2 px-4 py-2 bg-secondary text-primary font-medium rounded-lg hover:bg-opacity-90 transition-colors"
+          className="flex items-center justify-center gap-2 px-4 py-2 bg-secondary text-primary font-medium rounded-lg hover:bg-opacity-90 transition-colors w-full sm:w-auto"
         >
           <Plus className="w-4 h-4" />
           New Rule
@@ -96,46 +96,36 @@ export default function AutomationPage() {
       </div>
 
       {/* Automation Flow Diagram */}
-      <div className="bg-gradient-to-r from-primary to-accent rounded-xl p-6 text-white mb-8">
-        <h2 className="text-xl font-semibold mb-4 flex items-center gap-2">
-          <Zap className="w-6 h-6 text-secondary" />
+      <div className="bg-gradient-to-r from-primary to-accent rounded-xl p-4 sm:p-6 text-white mb-6 lg:mb-8">
+        <h2 className="text-lg sm:text-xl font-semibold mb-4 flex items-center gap-2">
+          <Zap className="w-5 h-5 sm:w-6 sm:h-6 text-secondary" />
           Automation Flow
         </h2>
-        <div className="flex items-center justify-between overflow-x-auto">
-          <div className="flex items-center gap-4 min-w-max">
-            <div className="bg-white/20 rounded-lg p-4 text-center">
-              <Plus className="w-8 h-8 mx-auto mb-2" />
-              <p className="text-sm font-medium">New Lead</p>
+        <div className="overflow-x-auto pb-2">
+          <div className="flex items-center gap-2 sm:gap-4 min-w-max">
+            <div className="bg-white/20 rounded-lg p-2 sm:p-4 text-center">
+              <Plus className="w-6 h-6 sm:w-8 sm:h-8 mx-auto mb-1 sm:mb-2" />
+              <p className="text-xs sm:text-sm font-medium">New Lead</p>
             </div>
-            <div className="text-2xl">→</div>
-            <div className="bg-white/20 rounded-lg p-4 text-center">
-              <Mail className="w-8 h-8 mx-auto mb-2" />
-              <p className="text-sm font-medium">Welcome Email</p>
+            <div className="text-xl sm:text-2xl">→</div>
+            <div className="bg-white/20 rounded-lg p-2 sm:p-4 text-center">
+              <Mail className="w-6 h-6 sm:w-8 sm:h-8 mx-auto mb-1 sm:mb-2" />
+              <p className="text-xs sm:text-sm font-medium">Welcome</p>
             </div>
-            <div className="text-2xl">→</div>
-            <div className="bg-white/20 rounded-lg p-4 text-center">
-              <Clock className="w-8 h-8 mx-auto mb-2" />
-              <p className="text-sm font-medium">Wait 3 Days</p>
+            <div className="text-xl sm:text-2xl">→</div>
+            <div className="bg-white/20 rounded-lg p-2 sm:p-4 text-center">
+              <Clock className="w-6 h-6 sm:w-8 sm:h-8 mx-auto mb-1 sm:mb-2" />
+              <p className="text-xs sm:text-sm font-medium">Wait 3d</p>
             </div>
-            <div className="text-2xl">→</div>
-            <div className="bg-white/20 rounded-lg p-4 text-center">
-              <Mail className="w-8 h-8 mx-auto mb-2" />
-              <p className="text-sm font-medium">Follow-up #1</p>
+            <div className="text-xl sm:text-2xl">→</div>
+            <div className="bg-white/20 rounded-lg p-2 sm:p-4 text-center">
+              <Mail className="w-6 h-6 sm:w-8 sm:h-8 mx-auto mb-1 sm:mb-2" />
+              <p className="text-xs sm:text-sm font-medium">Follow-up</p>
             </div>
-            <div className="text-2xl">→</div>
-            <div className="bg-white/20 rounded-lg p-4 text-center">
-              <Clock className="w-8 h-8 mx-auto mb-2" />
-              <p className="text-sm font-medium">Wait 5 Days</p>
-            </div>
-            <div className="text-2xl">→</div>
-            <div className="bg-white/20 rounded-lg p-4 text-center">
-              <Mail className="w-8 h-8 mx-auto mb-2" />
-              <p className="text-sm font-medium">Final Follow-up</p>
-            </div>
-            <div className="text-2xl">→</div>
-            <div className="bg-white/20 rounded-lg p-4 text-center">
-              <Bell className="w-8 h-8 mx-auto mb-2" />
-              <p className="text-sm font-medium">Reply / Cold</p>
+            <div className="text-xl sm:text-2xl">→</div>
+            <div className="bg-white/20 rounded-lg p-2 sm:p-4 text-center">
+              <Bell className="w-6 h-6 sm:w-8 sm:h-8 mx-auto mb-1 sm:mb-2" />
+              <p className="text-xs sm:text-sm font-medium">Reply/Cold</p>
             </div>
           </div>
         </div>
@@ -151,29 +141,29 @@ export default function AutomationPage() {
           return (
             <div
               key={rule.id}
-              className={`bg-white rounded-xl shadow-sm border border-gray-100 p-6 transition-all ${
+              className={`bg-white rounded-xl shadow-sm border border-gray-100 p-4 sm:p-6 transition-all ${
                 rule.is_active ? '' : 'opacity-60'
               }`}
             >
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-4">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                <div className="flex items-center gap-3 sm:gap-4">
                   <div
-                    className={`p-3 rounded-lg ${
+                    className={`p-2 sm:p-3 rounded-lg flex-shrink-0 ${
                       rule.is_active ? 'bg-secondary text-primary' : 'bg-gray-100 text-gray-500'
                     }`}
                   >
-                    <TriggerIcon className="w-6 h-6" />
+                    <TriggerIcon className="w-5 h-5 sm:w-6 sm:h-6" />
                   </div>
-                  <div>
-                    <h3 className="font-semibold text-gray-900">{rule.name}</h3>
-                    <p className="text-sm text-gray-500">{trigger?.description}</p>
+                  <div className="min-w-0">
+                    <h3 className="font-semibold text-gray-900 text-sm sm:text-base">{rule.name}</h3>
+                    <p className="text-xs sm:text-sm text-gray-500 truncate">{trigger?.description}</p>
                   </div>
                 </div>
 
-                <div className="flex items-center gap-6">
-                  <div className="text-right">
-                    <p className="text-sm text-gray-500">Action</p>
-                    <span className={`px-3 py-1 rounded-full text-xs font-medium ${action?.color}`}>
+                <div className="flex items-center justify-between sm:justify-end gap-4 sm:gap-6">
+                  <div className="sm:text-right">
+                    <p className="text-xs sm:text-sm text-gray-500">Action</p>
+                    <span className={`px-2 sm:px-3 py-1 rounded-full text-xs font-medium ${action?.color}`}>
                       {action?.label}
                     </span>
                   </div>
@@ -206,28 +196,28 @@ export default function AutomationPage() {
       </div>
 
       {/* Cron Status */}
-      <div className="mt-8 bg-white rounded-xl shadow-sm border border-gray-100 p-6">
-        <h3 className="font-semibold text-gray-900 mb-4">Automation Schedule</h3>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <div className="p-4 bg-gray-50 rounded-lg">
-            <p className="text-sm text-gray-500">Email Check</p>
-            <p className="font-semibold">Every 6 hours</p>
+      <div className="mt-6 lg:mt-8 bg-white rounded-xl shadow-sm border border-gray-100 p-4 sm:p-6">
+        <h3 className="font-semibold text-gray-900 mb-4 text-sm sm:text-base">Automation Schedule</h3>
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4">
+          <div className="p-3 sm:p-4 bg-gray-50 rounded-lg">
+            <p className="text-xs sm:text-sm text-gray-500">Email Check</p>
+            <p className="font-semibold text-sm sm:text-base">Every 6 hours</p>
           </div>
-          <div className="p-4 bg-gray-50 rounded-lg">
-            <p className="text-sm text-gray-500">Follow-up Check</p>
-            <p className="font-semibold">Daily at 6:00 AM GST</p>
+          <div className="p-3 sm:p-4 bg-gray-50 rounded-lg">
+            <p className="text-xs sm:text-sm text-gray-500">Follow-up Check</p>
+            <p className="font-semibold text-sm sm:text-base">Daily at 6:00 AM GST</p>
           </div>
-          <div className="p-4 bg-gray-50 rounded-lg">
-            <p className="text-sm text-gray-500">Lead Scraping</p>
-            <p className="font-semibold">Weekly on Monday</p>
+          <div className="p-3 sm:p-4 bg-gray-50 rounded-lg">
+            <p className="text-xs sm:text-sm text-gray-500">Lead Scraping</p>
+            <p className="font-semibold text-sm sm:text-base">Weekly on Monday</p>
           </div>
         </div>
       </div>
 
       {/* Create Rule Modal */}
       {showCreateModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white rounded-xl p-6 w-full max-w-md">
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+          <div className="bg-white rounded-xl p-4 sm:p-6 w-full max-w-md max-h-[90vh] overflow-y-auto">
             <h2 className="text-xl font-bold mb-4">Create Automation Rule</h2>
             <div className="space-y-4">
               <div>

@@ -29,26 +29,26 @@ export default function SettingsPage() {
   };
 
   return (
-    <div className="p-8">
+    <div className="p-4 sm:p-6 lg:p-8">
       {/* Header */}
-      <div className="flex items-center justify-between mb-8">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 lg:mb-8">
         <div>
-          <h1 className="text-3xl font-bold text-gray-900">Settings</h1>
-          <p className="text-gray-600 mt-1">Configure your marketing automation</p>
+          <h1 className="text-2xl sm:text-3xl font-bold text-gray-900">Settings</h1>
+          <p className="text-gray-600 mt-1 text-sm sm:text-base">Configure your marketing automation</p>
         </div>
         <button
           onClick={handleSave}
-          className="flex items-center gap-2 px-4 py-2 bg-secondary text-primary font-medium rounded-lg hover:bg-opacity-90 transition-colors"
+          className="flex items-center justify-center gap-2 px-4 py-2 bg-secondary text-primary font-medium rounded-lg hover:bg-opacity-90 transition-colors w-full sm:w-auto"
         >
           <Save className="w-4 h-4" />
           {saved ? 'Saved!' : 'Save Settings'}
         </button>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
         {/* Company Settings */}
-        <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
-          <h2 className="text-lg font-semibold text-gray-900 mb-6 flex items-center gap-2">
+        <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-4 sm:p-6">
+          <h2 className="text-base sm:text-lg font-semibold text-gray-900 mb-4 sm:mb-6 flex items-center gap-2">
             <Globe className="w-5 h-5 text-secondary" />
             Company Information
           </h2>
@@ -59,7 +59,7 @@ export default function SettingsPage() {
                 type="text"
                 value={settings.companyName}
                 onChange={(e) => setSettings((prev) => ({ ...prev, companyName: e.target.value }))}
-                className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary"
+                className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary text-sm sm:text-base"
               />
             </div>
             <div>
@@ -68,7 +68,7 @@ export default function SettingsPage() {
                 type="email"
                 value={settings.companyEmail}
                 onChange={(e) => setSettings((prev) => ({ ...prev, companyEmail: e.target.value }))}
-                className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary"
+                className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary text-sm sm:text-base"
               />
               <p className="text-xs text-gray-500 mt-1">Emails will be sent from this address</p>
             </div>
@@ -78,7 +78,7 @@ export default function SettingsPage() {
                 type="url"
                 value={settings.website}
                 onChange={(e) => setSettings((prev) => ({ ...prev, website: e.target.value }))}
-                className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary"
+                className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary text-sm sm:text-base"
               />
             </div>
             <div>
@@ -86,7 +86,7 @@ export default function SettingsPage() {
               <select
                 value={settings.timezone}
                 onChange={(e) => setSettings((prev) => ({ ...prev, timezone: e.target.value }))}
-                className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary"
+                className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary text-sm sm:text-base"
               >
                 <option value="Asia/Dubai">Dubai (GST)</option>
                 <option value="Asia/Kolkata">India (IST)</option>
@@ -98,8 +98,8 @@ export default function SettingsPage() {
         </div>
 
         {/* API Keys */}
-        <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
-          <h2 className="text-lg font-semibold text-gray-900 mb-6 flex items-center gap-2">
+        <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-4 sm:p-6">
+          <h2 className="text-base sm:text-lg font-semibold text-gray-900 mb-4 sm:mb-6 flex items-center gap-2">
             <Key className="w-5 h-5 text-secondary" />
             API Configuration
           </h2>
@@ -110,7 +110,7 @@ export default function SettingsPage() {
                 type="text"
                 value={settings.supabaseUrl}
                 onChange={(e) => setSettings((prev) => ({ ...prev, supabaseUrl: e.target.value }))}
-                className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary"
+                className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary text-sm sm:text-base"
                 placeholder="https://xxx.supabase.co"
               />
             </div>
@@ -120,7 +120,7 @@ export default function SettingsPage() {
                 type="password"
                 value={settings.supabaseKey}
                 onChange={(e) => setSettings((prev) => ({ ...prev, supabaseKey: e.target.value }))}
-                className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary"
+                className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary text-sm sm:text-base"
                 placeholder="eyJhbGc..."
               />
             </div>
@@ -130,7 +130,7 @@ export default function SettingsPage() {
                 type="password"
                 value={settings.resendKey}
                 onChange={(e) => setSettings((prev) => ({ ...prev, resendKey: e.target.value }))}
-                className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary"
+                className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary text-sm sm:text-base"
                 placeholder="re_xxx..."
               />
               <p className="text-xs text-gray-500 mt-1">Get free API key at resend.com</p>
@@ -139,8 +139,8 @@ export default function SettingsPage() {
         </div>
 
         {/* Automation Settings */}
-        <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
-          <h2 className="text-lg font-semibold text-gray-900 mb-6 flex items-center gap-2">
+        <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-4 sm:p-6">
+          <h2 className="text-base sm:text-lg font-semibold text-gray-900 mb-4 sm:mb-6 flex items-center gap-2">
             <Clock className="w-5 h-5 text-secondary" />
             Automation Settings
           </h2>
@@ -151,7 +151,7 @@ export default function SettingsPage() {
                 type="number"
                 value={settings.dailyEmailLimit}
                 onChange={(e) => setSettings((prev) => ({ ...prev, dailyEmailLimit: parseInt(e.target.value) }))}
-                className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary"
+                className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary text-sm sm:text-base"
                 min="1"
                 max="500"
               />
@@ -163,7 +163,7 @@ export default function SettingsPage() {
                 type="number"
                 value={settings.followUpDays}
                 onChange={(e) => setSettings((prev) => ({ ...prev, followUpDays: parseInt(e.target.value) }))}
-                className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary"
+                className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary text-sm sm:text-base"
                 min="1"
                 max="14"
               />
@@ -174,7 +174,7 @@ export default function SettingsPage() {
                 type="number"
                 value={settings.markColdAfterDays}
                 onChange={(e) => setSettings((prev) => ({ ...prev, markColdAfterDays: parseInt(e.target.value) }))}
-                className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary"
+                className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary text-sm sm:text-base"
                 min="7"
                 max="30"
               />
@@ -183,16 +183,16 @@ export default function SettingsPage() {
         </div>
 
         {/* Notifications */}
-        <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
-          <h2 className="text-lg font-semibold text-gray-900 mb-6 flex items-center gap-2">
+        <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-4 sm:p-6">
+          <h2 className="text-base sm:text-lg font-semibold text-gray-900 mb-4 sm:mb-6 flex items-center gap-2">
             <Bell className="w-5 h-5 text-secondary" />
             Notifications
           </h2>
           <div className="space-y-4">
             <div className="flex items-center justify-between">
               <div>
-                <p className="font-medium text-gray-700">Email Notifications</p>
-                <p className="text-sm text-gray-500">Get notified when leads reply</p>
+                <p className="font-medium text-gray-700 text-sm sm:text-base">Email Notifications</p>
+                <p className="text-xs sm:text-sm text-gray-500">Get notified when leads reply</p>
               </div>
               <label className="relative inline-flex items-center cursor-pointer">
                 <input
@@ -211,7 +211,7 @@ export default function SettingsPage() {
                   type="email"
                   value={settings.notificationEmail}
                   onChange={(e) => setSettings((prev) => ({ ...prev, notificationEmail: e.target.value }))}
-                  className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary"
+                  className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary text-sm sm:text-base"
                   placeholder="your@email.com"
                 />
               </div>
@@ -221,13 +221,13 @@ export default function SettingsPage() {
       </div>
 
       {/* Database Schema Info */}
-      <div className="mt-8 bg-white rounded-xl shadow-sm border border-gray-100 p-6">
-        <h2 className="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
+      <div className="mt-6 lg:mt-8 bg-white rounded-xl shadow-sm border border-gray-100 p-4 sm:p-6">
+        <h2 className="text-base sm:text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
           <Database className="w-5 h-5 text-secondary" />
           Database Setup (Supabase)
         </h2>
-        <p className="text-gray-600 mb-4">Run this SQL in your Supabase SQL editor to create the required tables:</p>
-        <pre className="bg-gray-900 text-green-400 p-4 rounded-lg overflow-x-auto text-sm">
+        <p className="text-gray-600 mb-4 text-sm sm:text-base">Run this SQL in your Supabase SQL editor to create the required tables:</p>
+        <pre className="bg-gray-900 text-green-400 p-3 sm:p-4 rounded-lg overflow-x-auto text-xs sm:text-sm">
 {`-- Leads table
 CREATE TABLE leads (
   id UUID DEFAULT gen_random_uuid() PRIMARY KEY,

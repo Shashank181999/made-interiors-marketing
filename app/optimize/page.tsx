@@ -98,16 +98,16 @@ export default function OptimizePage() {
   ];
 
   return (
-    <div className="p-8">
-      <div className="flex items-center justify-between mb-8">
+    <div className="p-4 sm:p-6 lg:p-8">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 lg:mb-8">
         <div>
-          <h1 className="text-3xl font-bold text-gray-900">Data Optimization</h1>
-          <p className="text-gray-600 mt-1">Manage storage and clean up unused data</p>
+          <h1 className="text-2xl sm:text-3xl font-bold text-gray-900">Data Optimization</h1>
+          <p className="text-gray-600 mt-1 text-sm sm:text-base">Manage storage and clean up unused data</p>
         </div>
         <button
           onClick={fetchStats}
           disabled={loading}
-          className="flex items-center gap-2 px-4 py-2 bg-white border border-gray-200 rounded-lg hover:bg-gray-50"
+          className="flex items-center justify-center gap-2 px-4 py-2 bg-white border border-gray-200 rounded-lg hover:bg-gray-50 w-full sm:w-auto"
         >
           <RefreshCw className={`w-4 h-4 ${loading ? 'animate-spin' : ''}`} />
           Refresh
@@ -115,66 +115,66 @@ export default function OptimizePage() {
       </div>
 
       {/* Storage Overview */}
-      <div className="bg-white rounded-xl p-6 mb-8 shadow-sm border border-gray-100">
-        <h2 className="text-xl font-semibold mb-4 text-gray-900">Storage Overview</h2>
+      <div className="bg-white rounded-xl p-4 sm:p-6 mb-6 lg:mb-8 shadow-sm border border-gray-100">
+        <h2 className="text-lg sm:text-xl font-semibold mb-4 text-gray-900">Storage Overview</h2>
         {loading ? (
           <p className="text-gray-500">Loading...</p>
         ) : stats ? (
           <div className="space-y-4">
             {/* Progress Bar */}
             <div>
-              <div className="flex justify-between text-sm mb-2">
+              <div className="flex justify-between text-xs sm:text-sm mb-2">
                 <span>Used: {stats.estimated_storage_mb} MB</span>
                 <span>Free Limit: {stats.free_limit_mb} MB</span>
               </div>
-              <div className="h-4 bg-gray-200 rounded-full overflow-hidden">
+              <div className="h-3 sm:h-4 bg-gray-200 rounded-full overflow-hidden">
                 <div
                   className="h-full bg-secondary rounded-full"
                   style={{ width: stats.usage_percent }}
                 />
               </div>
-              <p className="text-sm text-gray-500 mt-1">
+              <p className="text-xs sm:text-sm text-gray-500 mt-1">
                 Usage: {stats.usage_percent}
               </p>
             </div>
 
             {/* Data Counts */}
-            <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mt-6">
-              <div className="bg-gray-50 p-4 rounded-lg">
-                <p className="text-2xl font-bold text-gray-900">{stats.counts.leads}</p>
-                <p className="text-sm text-gray-500">Total Leads</p>
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4 mt-6">
+              <div className="bg-gray-50 p-3 sm:p-4 rounded-lg">
+                <p className="text-xl sm:text-2xl font-bold text-gray-900">{stats.counts.leads}</p>
+                <p className="text-xs sm:text-sm text-gray-500">Total Leads</p>
               </div>
-              <div className="bg-gray-50 p-4 rounded-lg">
-                <p className="text-2xl font-bold text-gray-900">{stats.counts.email_logs}</p>
-                <p className="text-sm text-gray-500">Email Logs</p>
+              <div className="bg-gray-50 p-3 sm:p-4 rounded-lg">
+                <p className="text-xl sm:text-2xl font-bold text-gray-900">{stats.counts.email_logs}</p>
+                <p className="text-xs sm:text-sm text-gray-500">Email Logs</p>
               </div>
-              <div className="bg-gray-50 p-4 rounded-lg">
-                <p className="text-2xl font-bold text-gray-900">{stats.counts.campaigns}</p>
-                <p className="text-sm text-gray-500">Campaigns</p>
+              <div className="bg-gray-50 p-3 sm:p-4 rounded-lg">
+                <p className="text-xl sm:text-2xl font-bold text-gray-900">{stats.counts.campaigns}</p>
+                <p className="text-xs sm:text-sm text-gray-500">Campaigns</p>
               </div>
-              <div className="bg-gray-50 p-4 rounded-lg">
-                <p className="text-2xl font-bold text-orange-500">{stats.counts.cold_leads}</p>
-                <p className="text-sm text-gray-500">Cold Leads</p>
+              <div className="bg-gray-50 p-3 sm:p-4 rounded-lg">
+                <p className="text-xl sm:text-2xl font-bold text-orange-500">{stats.counts.cold_leads}</p>
+                <p className="text-xs sm:text-sm text-gray-500">Cold Leads</p>
               </div>
-              <div className="bg-gray-50 p-4 rounded-lg">
-                <p className="text-2xl font-bold text-yellow-500">{stats.counts.duplicate_leads}</p>
-                <p className="text-sm text-gray-500">Duplicates</p>
+              <div className="bg-gray-50 p-3 sm:p-4 rounded-lg col-span-2 sm:col-span-1">
+                <p className="text-xl sm:text-2xl font-bold text-yellow-500">{stats.counts.duplicate_leads}</p>
+                <p className="text-xs sm:text-sm text-gray-500">Duplicates</p>
               </div>
             </div>
           </div>
         ) : (
-          <p className="text-yellow-500">Failed to load stats. Is Supabase configured?</p>
+          <p className="text-yellow-500 text-sm sm:text-base">Failed to load stats. Is Supabase configured?</p>
         )}
       </div>
 
       {/* Optimization Result */}
       {result && (
-        <div className={`mb-8 p-4 rounded-lg ${result.success ? 'bg-green-900/30 border border-green-700' : 'bg-red-900/30 border border-red-700'}`}>
+        <div className={`mb-6 lg:mb-8 p-3 sm:p-4 rounded-lg ${result.success ? 'bg-green-900/30 border border-green-700' : 'bg-red-900/30 border border-red-700'}`}>
           <div className="flex items-center gap-2">
-            <CheckCircle className="w-5 h-5 text-green-500" />
-            <span className="font-medium">{result.message}</span>
+            <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0" />
+            <span className="font-medium text-sm sm:text-base">{result.message}</span>
           </div>
-          <div className="mt-2 text-sm text-gray-400">
+          <div className="mt-2 text-xs sm:text-sm text-gray-400">
             {Object.entries(result.results).map(([key, value]) => (
               <p key={key}>{key.replace(/_/g, ' ')}: {value}</p>
             ))}
@@ -184,13 +184,13 @@ export default function OptimizePage() {
 
       {/* Optimization Options */}
       <div className="space-y-4">
-        <h2 className="text-xl font-semibold text-gray-900">Optimization Actions</h2>
+        <h2 className="text-lg sm:text-xl font-semibold text-gray-900">Optimization Actions</h2>
 
         {/* Run All Button */}
         <button
           onClick={() => runOptimization('all')}
           disabled={optimizing}
-          className="w-full p-4 bg-secondary text-white rounded-xl font-semibold hover:opacity-90 disabled:opacity-50 flex items-center justify-center gap-2"
+          className="w-full p-3 sm:p-4 bg-secondary text-white rounded-xl font-semibold hover:opacity-90 disabled:opacity-50 flex items-center justify-center gap-2 text-sm sm:text-base"
         >
           {optimizing ? (
             <>
@@ -206,21 +206,21 @@ export default function OptimizePage() {
         </button>
 
         {/* Individual Options */}
-        <div className="grid md:grid-cols-2 gap-4">
+        <div className="grid sm:grid-cols-2 gap-3 sm:gap-4">
           {optimizationOptions.map((option) => (
-            <div key={option.id} className="bg-white rounded-xl p-4 shadow-sm border border-gray-100">
-              <div className="flex items-start justify-between">
-                <div className="flex items-start gap-3">
-                  <option.icon className="w-5 h-5 mt-1 text-gray-400" />
-                  <div>
-                    <h3 className="font-medium text-gray-900">{option.title}</h3>
-                    <p className="text-sm text-gray-500">{option.description}</p>
+            <div key={option.id} className="bg-white rounded-xl p-3 sm:p-4 shadow-sm border border-gray-100">
+              <div className="flex items-start justify-between gap-3">
+                <div className="flex items-start gap-2 sm:gap-3 min-w-0">
+                  <option.icon className="w-4 h-4 sm:w-5 sm:h-5 mt-0.5 text-gray-400 flex-shrink-0" />
+                  <div className="min-w-0">
+                    <h3 className="font-medium text-gray-900 text-sm sm:text-base">{option.title}</h3>
+                    <p className="text-xs sm:text-sm text-gray-500 truncate">{option.description}</p>
                   </div>
                 </div>
                 <button
                   onClick={() => runOptimization(option.id)}
                   disabled={optimizing}
-                  className="px-3 py-1 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 text-sm font-medium disabled:opacity-50"
+                  className="px-3 py-1 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 text-xs sm:text-sm font-medium disabled:opacity-50 flex-shrink-0"
                 >
                   Run
                 </button>

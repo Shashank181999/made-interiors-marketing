@@ -86,16 +86,16 @@ export default function CampaignsPage() {
   };
 
   return (
-    <div className="p-8">
+    <div className="p-4 sm:p-6 lg:p-8">
       {/* Header */}
-      <div className="flex items-center justify-between mb-8">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 lg:mb-8">
         <div>
-          <h1 className="text-3xl font-bold text-gray-900">Campaigns</h1>
-          <p className="text-gray-600 mt-1">Create and manage email campaigns</p>
+          <h1 className="text-2xl sm:text-3xl font-bold text-gray-900">Campaigns</h1>
+          <p className="text-gray-600 mt-1 text-sm sm:text-base">Create and manage email campaigns</p>
         </div>
         <button
           onClick={() => setShowCreateModal(true)}
-          className="flex items-center gap-2 px-4 py-2 bg-secondary text-primary font-medium rounded-lg hover:bg-opacity-90 transition-colors"
+          className="flex items-center justify-center gap-2 px-4 py-2 bg-secondary text-primary font-medium rounded-lg hover:bg-opacity-90 transition-colors w-full sm:w-auto"
         >
           <Plus className="w-4 h-4" />
           New Campaign
@@ -103,34 +103,34 @@ export default function CampaignsPage() {
       </div>
 
       {/* Stats */}
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
-        <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
-          <div className="flex items-center gap-3 mb-2">
-            <Mail className="w-6 h-6 text-secondary" />
-            <span className="text-sm text-gray-500">Total Campaigns</span>
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 mb-6 lg:mb-8">
+        <div className="bg-white rounded-xl p-4 sm:p-6 shadow-sm border border-gray-100">
+          <div className="flex items-center gap-2 sm:gap-3 mb-2">
+            <Mail className="w-5 h-5 sm:w-6 sm:h-6 text-secondary" />
+            <span className="text-xs sm:text-sm text-gray-500">Total Campaigns</span>
           </div>
-          <p className="text-2xl font-bold">{campaigns.length}</p>
+          <p className="text-xl sm:text-2xl font-bold">{campaigns.length}</p>
         </div>
-        <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
-          <div className="flex items-center gap-3 mb-2">
-            <Play className="w-6 h-6 text-green-500" />
-            <span className="text-sm text-gray-500">Active</span>
+        <div className="bg-white rounded-xl p-4 sm:p-6 shadow-sm border border-gray-100">
+          <div className="flex items-center gap-2 sm:gap-3 mb-2">
+            <Play className="w-5 h-5 sm:w-6 sm:h-6 text-green-500" />
+            <span className="text-xs sm:text-sm text-gray-500">Active</span>
           </div>
-          <p className="text-2xl font-bold">{campaigns.filter((c) => c.status === 'active').length}</p>
+          <p className="text-xl sm:text-2xl font-bold">{campaigns.filter((c) => c.status === 'active').length}</p>
         </div>
-        <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
-          <div className="flex items-center gap-3 mb-2">
-            <Users className="w-6 h-6 text-blue-500" />
-            <span className="text-sm text-gray-500">Total Sent</span>
+        <div className="bg-white rounded-xl p-4 sm:p-6 shadow-sm border border-gray-100">
+          <div className="flex items-center gap-2 sm:gap-3 mb-2">
+            <Users className="w-5 h-5 sm:w-6 sm:h-6 text-blue-500" />
+            <span className="text-xs sm:text-sm text-gray-500">Total Sent</span>
           </div>
-          <p className="text-2xl font-bold">{campaigns.reduce((sum, c) => sum + c.sent_count, 0)}</p>
+          <p className="text-xl sm:text-2xl font-bold">{campaigns.reduce((sum, c) => sum + c.sent_count, 0)}</p>
         </div>
-        <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
-          <div className="flex items-center gap-3 mb-2">
-            <MessageSquare className="w-6 h-6 text-purple-500" />
-            <span className="text-sm text-gray-500">Total Replies</span>
+        <div className="bg-white rounded-xl p-4 sm:p-6 shadow-sm border border-gray-100">
+          <div className="flex items-center gap-2 sm:gap-3 mb-2">
+            <MessageSquare className="w-5 h-5 sm:w-6 sm:h-6 text-purple-500" />
+            <span className="text-xs sm:text-sm text-gray-500">Total Replies</span>
           </div>
-          <p className="text-2xl font-bold">{campaigns.reduce((sum, c) => sum + c.replied_count, 0)}</p>
+          <p className="text-xl sm:text-2xl font-bold">{campaigns.reduce((sum, c) => sum + c.replied_count, 0)}</p>
         </div>
       </div>
 
@@ -139,19 +139,19 @@ export default function CampaignsPage() {
         {campaigns.map((campaign) => (
           <div
             key={campaign.id}
-            className="bg-white rounded-xl shadow-sm border border-gray-100 p-6 hover:shadow-md transition-shadow"
+            className="bg-white rounded-xl shadow-sm border border-gray-100 p-4 sm:p-6 hover:shadow-md transition-shadow"
           >
-            <div className="flex items-start justify-between mb-4">
-              <div>
-                <div className="flex items-center gap-3">
-                  <h3 className="text-lg font-semibold text-gray-900">{campaign.name}</h3>
-                  <span className={`px-3 py-1 rounded-full text-xs font-medium ${getStatusColor(campaign.status)}`}>
+            <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-3 mb-4">
+              <div className="min-w-0">
+                <div className="flex flex-wrap items-center gap-2 sm:gap-3">
+                  <h3 className="text-base sm:text-lg font-semibold text-gray-900 truncate">{campaign.name}</h3>
+                  <span className={`px-2 sm:px-3 py-1 rounded-full text-xs font-medium ${getStatusColor(campaign.status)}`}>
                     {campaign.status}
                   </span>
                 </div>
-                <p className="text-sm text-gray-500 mt-1">Subject: {campaign.subject}</p>
+                <p className="text-xs sm:text-sm text-gray-500 mt-1 truncate">Subject: {campaign.subject}</p>
               </div>
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-1 sm:gap-2 flex-shrink-0">
                 {campaign.status !== 'completed' && (
                   <button
                     onClick={() => handleToggleCampaign(campaign.id)}
@@ -192,36 +192,36 @@ export default function CampaignsPage() {
             </div>
 
             {/* Stats */}
-            <div className="grid grid-cols-5 gap-4">
-              <div className="text-center p-3 bg-gray-50 rounded-lg">
-                <p className="text-sm text-gray-500">Leads</p>
-                <p className="text-lg font-semibold">{campaign.leads_count}</p>
+            <div className="grid grid-cols-3 sm:grid-cols-5 gap-2 sm:gap-4">
+              <div className="text-center p-2 sm:p-3 bg-gray-50 rounded-lg">
+                <p className="text-xs text-gray-500">Leads</p>
+                <p className="text-sm sm:text-lg font-semibold">{campaign.leads_count}</p>
               </div>
-              <div className="text-center p-3 bg-gray-50 rounded-lg">
-                <p className="text-sm text-gray-500">Sent</p>
-                <p className="text-lg font-semibold">{campaign.sent_count}</p>
+              <div className="text-center p-2 sm:p-3 bg-gray-50 rounded-lg">
+                <p className="text-xs text-gray-500">Sent</p>
+                <p className="text-sm sm:text-lg font-semibold">{campaign.sent_count}</p>
               </div>
-              <div className="text-center p-3 bg-gray-50 rounded-lg">
-                <p className="text-sm text-gray-500">Opened</p>
-                <p className="text-lg font-semibold">
+              <div className="text-center p-2 sm:p-3 bg-gray-50 rounded-lg">
+                <p className="text-xs text-gray-500">Opened</p>
+                <p className="text-sm sm:text-lg font-semibold">
                   {campaign.opened_count}
-                  <span className="text-xs text-gray-400 ml-1">
+                  <span className="hidden sm:inline text-xs text-gray-400 ml-1">
                     ({calculateRate(campaign.opened_count, campaign.sent_count)})
                   </span>
                 </p>
               </div>
-              <div className="text-center p-3 bg-gray-50 rounded-lg">
-                <p className="text-sm text-gray-500">Clicked</p>
-                <p className="text-lg font-semibold">
+              <div className="text-center p-2 sm:p-3 bg-gray-50 rounded-lg hidden sm:block">
+                <p className="text-xs text-gray-500">Clicked</p>
+                <p className="text-sm sm:text-lg font-semibold">
                   {campaign.clicked_count}
                   <span className="text-xs text-gray-400 ml-1">
                     ({calculateRate(campaign.clicked_count, campaign.sent_count)})
                   </span>
                 </p>
               </div>
-              <div className="text-center p-3 bg-gray-50 rounded-lg">
-                <p className="text-sm text-gray-500">Replied</p>
-                <p className="text-lg font-semibold">
+              <div className="text-center p-2 sm:p-3 bg-gray-50 rounded-lg hidden sm:block">
+                <p className="text-xs text-gray-500">Replied</p>
+                <p className="text-sm sm:text-lg font-semibold">
                   {campaign.replied_count}
                   <span className="text-xs text-gray-400 ml-1">
                     ({calculateRate(campaign.replied_count, campaign.sent_count)})
@@ -249,8 +249,8 @@ export default function CampaignsPage() {
 
       {/* Create Campaign Modal */}
       {showCreateModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white rounded-xl p-6 w-full max-w-md">
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+          <div className="bg-white rounded-xl p-4 sm:p-6 w-full max-w-md max-h-[90vh] overflow-y-auto">
             <h2 className="text-xl font-bold mb-4">Create New Campaign</h2>
             <div className="space-y-4">
               <div>

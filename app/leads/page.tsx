@@ -174,20 +174,20 @@ export default function LeadsPage() {
   };
 
   return (
-    <div className="p-8">
+    <div className="p-4 sm:p-6 lg:p-8">
       {/* Header */}
-      <div className="flex items-center justify-between mb-8">
+      <div className="flex flex-col gap-4 mb-6 lg:mb-8">
         <div>
-          <h1 className="text-3xl font-bold text-gray-900">Leads</h1>
-          <p className="text-gray-600 mt-1">Manage your marketing leads</p>
+          <h1 className="text-2xl sm:text-3xl font-bold text-gray-900">Leads</h1>
+          <p className="text-gray-600 mt-1 text-sm sm:text-base">Manage your marketing leads</p>
         </div>
-        <div className="flex gap-3">
+        <div className="flex flex-wrap gap-2 sm:gap-3">
           <button
             onClick={fetchLeads}
-            className="flex items-center gap-2 px-4 py-2 bg-white border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors"
+            className="flex items-center justify-center gap-2 px-3 sm:px-4 py-2 bg-white border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors text-sm"
           >
             <RefreshCw className={`w-4 h-4 ${loading ? 'animate-spin' : ''}`} />
-            Refresh
+            <span className="hidden sm:inline">Refresh</span>
           </button>
           <input
             type="file"
@@ -198,14 +198,14 @@ export default function LeadsPage() {
           />
           <button
             onClick={() => fileInputRef.current?.click()}
-            className="flex items-center gap-2 px-4 py-2 bg-white border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors"
+            className="flex items-center justify-center gap-2 px-3 sm:px-4 py-2 bg-white border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors text-sm"
           >
             <Upload className="w-4 h-4" />
-            Import CSV
+            <span className="hidden sm:inline">Import CSV</span>
           </button>
           <button
             onClick={() => setShowAddModal(true)}
-            className="flex items-center gap-2 px-4 py-2 bg-secondary text-primary font-medium rounded-lg hover:bg-opacity-90 transition-colors"
+            className="flex items-center justify-center gap-2 px-3 sm:px-4 py-2 bg-secondary text-primary font-medium rounded-lg hover:bg-opacity-90 transition-colors text-sm flex-1 sm:flex-none"
           >
             <Plus className="w-4 h-4" />
             Add Lead
@@ -214,9 +214,9 @@ export default function LeadsPage() {
       </div>
 
       {/* Filters */}
-      <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-4 mb-6">
-        <div className="flex flex-wrap gap-4">
-          <div className="flex-1 min-w-[200px]">
+      <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-3 sm:p-4 mb-4 sm:mb-6">
+        <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
+          <div className="flex-1">
             <div className="relative">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
               <input
@@ -224,56 +224,58 @@ export default function LeadsPage() {
                 placeholder="Search leads..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-10 pr-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent"
+                className="w-full pl-10 pr-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent text-sm"
               />
             </div>
           </div>
-          <select
-            value={filterStatus}
-            onChange={(e) => setFilterStatus(e.target.value)}
-            className="px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary"
-          >
-            <option value="all">All Status</option>
-            <option value="new">New</option>
-            <option value="contacted">Contacted</option>
-            <option value="opened">Opened</option>
-            <option value="clicked">Clicked</option>
-            <option value="replied">Replied</option>
-            <option value="cold">Cold</option>
-          </select>
-          <select
-            value={filterSource}
-            onChange={(e) => setFilterSource(e.target.value)}
-            className="px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary"
-          >
-            <option value="all">All Sources</option>
-            <option value="linkedin">LinkedIn</option>
-            <option value="google_maps">Google Maps</option>
-            <option value="website">Website</option>
-            <option value="instagram">Instagram</option>
-            <option value="manual">Manual</option>
-          </select>
+          <div className="flex gap-2 sm:gap-3">
+            <select
+              value={filterStatus}
+              onChange={(e) => setFilterStatus(e.target.value)}
+              className="flex-1 sm:flex-none px-3 sm:px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary text-sm"
+            >
+              <option value="all">All Status</option>
+              <option value="new">New</option>
+              <option value="contacted">Contacted</option>
+              <option value="opened">Opened</option>
+              <option value="clicked">Clicked</option>
+              <option value="replied">Replied</option>
+              <option value="cold">Cold</option>
+            </select>
+            <select
+              value={filterSource}
+              onChange={(e) => setFilterSource(e.target.value)}
+              className="flex-1 sm:flex-none px-3 sm:px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary text-sm"
+            >
+              <option value="all">All Sources</option>
+              <option value="linkedin">LinkedIn</option>
+              <option value="google_maps">Google Maps</option>
+              <option value="website">Website</option>
+              <option value="instagram">Instagram</option>
+              <option value="manual">Manual</option>
+            </select>
+          </div>
         </div>
       </div>
 
       {/* Bulk Actions */}
       {selectedLeads.length > 0 && (
-        <div className="bg-primary text-white rounded-lg p-4 mb-6 flex items-center justify-between">
-          <span>{selectedLeads.length} lead(s) selected</span>
-          <div className="flex gap-2">
+        <div className="bg-primary text-white rounded-lg p-3 sm:p-4 mb-4 sm:mb-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+          <span className="text-sm sm:text-base">{selectedLeads.length} lead(s) selected</span>
+          <div className="flex gap-2 w-full sm:w-auto">
             <button
               onClick={() => handleSendEmail(selectedLeads)}
-              className="flex items-center gap-2 px-4 py-2 bg-secondary text-primary rounded-lg hover:bg-opacity-90"
+              className="flex-1 sm:flex-none flex items-center justify-center gap-2 px-3 sm:px-4 py-2 bg-secondary text-primary rounded-lg hover:bg-opacity-90 text-sm"
             >
               <Mail className="w-4 h-4" />
-              Send Email
+              <span className="hidden sm:inline">Send Email</span>
             </button>
             <button
               onClick={() => handleDeleteLeads(selectedLeads)}
-              className="flex items-center gap-2 px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600"
+              className="flex-1 sm:flex-none flex items-center justify-center gap-2 px-3 sm:px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 text-sm"
             >
               <Trash2 className="w-4 h-4" />
-              Delete
+              <span className="hidden sm:inline">Delete</span>
             </button>
           </div>
         </div>
@@ -287,9 +289,9 @@ export default function LeadsPage() {
         </div>
       )}
 
-      {/* Leads Table */}
+      {/* Leads - Desktop Table */}
       {!loading && (
-        <div className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+        <div className="hidden lg:block bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
           <table className="w-full">
             <thead className="bg-gray-50 border-b border-gray-100">
               <tr>
@@ -397,10 +399,89 @@ export default function LeadsPage() {
         </div>
       )}
 
+      {/* Leads - Mobile Cards */}
+      {!loading && (
+        <div className="lg:hidden space-y-3">
+          {filteredLeads.length === 0 ? (
+            <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-8 text-center text-gray-500">
+              <Users className="w-12 h-12 mx-auto mb-4 text-gray-300" />
+              <p className="font-medium">No leads yet</p>
+              <p className="text-sm mt-1">Run scrapers or import CSV to add leads</p>
+              <div className="flex flex-col gap-2 mt-4">
+                <a
+                  href="/scraping"
+                  className="px-4 py-2 bg-secondary text-primary rounded-lg font-medium hover:bg-opacity-90"
+                >
+                  Run Scrapers
+                </a>
+                <button
+                  onClick={() => fileInputRef.current?.click()}
+                  className="px-4 py-2 bg-white border border-gray-200 rounded-lg hover:bg-gray-50"
+                >
+                  Import CSV
+                </button>
+              </div>
+            </div>
+          ) : (
+            filteredLeads.map((lead) => (
+              <div key={lead.id} className="bg-white rounded-xl shadow-sm border border-gray-100 p-4">
+                <div className="flex items-start gap-3">
+                  <input
+                    type="checkbox"
+                    checked={selectedLeads.includes(lead.id)}
+                    onChange={(e) => {
+                      if (e.target.checked) {
+                        setSelectedLeads((prev) => [...prev, lead.id]);
+                      } else {
+                        setSelectedLeads((prev) => prev.filter((id) => id !== lead.id));
+                      }
+                    }}
+                    className="rounded border-gray-300 mt-1"
+                  />
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-start justify-between gap-2">
+                      <div className="min-w-0">
+                        <p className="font-medium text-gray-900 truncate">{lead.name}</p>
+                        <p className="text-sm text-gray-500 truncate">{lead.email}</p>
+                        {lead.company && (
+                          <p className="text-sm text-gray-400 truncate">{lead.company}</p>
+                        )}
+                      </div>
+                      <span className="text-xl flex-shrink-0">{getSourceIcon(lead.source)}</span>
+                    </div>
+                    <div className="flex items-center justify-between mt-3">
+                      <span className={`px-3 py-1 rounded-full text-xs font-medium ${getStatusColor(lead.status)}`}>
+                        {lead.status}
+                      </span>
+                      <div className="flex items-center gap-1">
+                        <button
+                          onClick={() => handleSendEmail([lead.id])}
+                          className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
+                          title="Send Email"
+                        >
+                          <Mail className="w-4 h-4 text-gray-600" />
+                        </button>
+                        <button
+                          onClick={() => handleDeleteLeads([lead.id])}
+                          className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
+                          title="Delete"
+                        >
+                          <Trash2 className="w-4 h-4 text-gray-600" />
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))
+          )}
+        </div>
+      )}
+
       {/* Add Lead Modal */}
       {showAddModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white rounded-xl p-6 w-full max-w-md">
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+          <div className="bg-white rounded-xl p-4 sm:p-6 w-full max-w-md max-h-[90vh] overflow-y-auto">
             <h2 className="text-xl font-bold mb-4">Add New Lead</h2>
             <div className="space-y-4">
               <div>

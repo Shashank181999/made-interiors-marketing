@@ -41,17 +41,17 @@ export default function AnalyticsPage() {
   const maxEmails = Math.max(...weeklyData.map((d) => d.emails));
 
   return (
-    <div className="p-8">
+    <div className="p-4 sm:p-6 lg:p-8">
       {/* Header */}
-      <div className="flex items-center justify-between mb-8">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 lg:mb-8">
         <div>
-          <h1 className="text-3xl font-bold text-gray-900">Analytics</h1>
-          <p className="text-gray-600 mt-1">Track your marketing performance</p>
+          <h1 className="text-2xl sm:text-3xl font-bold text-gray-900">Analytics</h1>
+          <p className="text-gray-600 mt-1 text-sm sm:text-base">Track your marketing performance</p>
         </div>
         <select
           value={timeRange}
           onChange={(e) => setTimeRange(e.target.value)}
-          className="px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary"
+          className="px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary text-sm sm:text-base w-full sm:w-auto"
         >
           <option value="7d">Last 7 days</option>
           <option value="30d">Last 30 days</option>
@@ -60,42 +60,42 @@ export default function AnalyticsPage() {
       </div>
 
       {/* Overview Stats */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
-        <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
-          <div className="flex items-center justify-between mb-4">
-            <Users className="w-8 h-8 text-blue-500" />
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 mb-6 lg:mb-8">
+        <div className="bg-white rounded-xl p-4 sm:p-6 shadow-sm border border-gray-100">
+          <div className="flex items-center justify-between mb-2 sm:mb-4">
+            <Users className="w-6 h-6 sm:w-8 sm:h-8 text-blue-500" />
           </div>
-          <p className="text-2xl font-bold text-gray-900">0</p>
-          <p className="text-sm text-gray-500">Total Leads</p>
+          <p className="text-xl sm:text-2xl font-bold text-gray-900">0</p>
+          <p className="text-xs sm:text-sm text-gray-500">Total Leads</p>
         </div>
-        <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
-          <div className="flex items-center justify-between mb-4">
-            <Mail className="w-8 h-8 text-purple-500" />
+        <div className="bg-white rounded-xl p-4 sm:p-6 shadow-sm border border-gray-100">
+          <div className="flex items-center justify-between mb-2 sm:mb-4">
+            <Mail className="w-6 h-6 sm:w-8 sm:h-8 text-purple-500" />
           </div>
-          <p className="text-2xl font-bold text-gray-900">0</p>
-          <p className="text-sm text-gray-500">Emails Sent</p>
+          <p className="text-xl sm:text-2xl font-bold text-gray-900">0</p>
+          <p className="text-xs sm:text-sm text-gray-500">Emails Sent</p>
         </div>
-        <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
-          <div className="flex items-center justify-between mb-4">
-            <MousePointer className="w-8 h-8 text-green-500" />
+        <div className="bg-white rounded-xl p-4 sm:p-6 shadow-sm border border-gray-100">
+          <div className="flex items-center justify-between mb-2 sm:mb-4">
+            <MousePointer className="w-6 h-6 sm:w-8 sm:h-8 text-green-500" />
           </div>
-          <p className="text-2xl font-bold text-gray-900">0%</p>
-          <p className="text-sm text-gray-500">Open Rate</p>
+          <p className="text-xl sm:text-2xl font-bold text-gray-900">0%</p>
+          <p className="text-xs sm:text-sm text-gray-500">Open Rate</p>
         </div>
-        <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
-          <div className="flex items-center justify-between mb-4">
-            <MessageSquare className="w-8 h-8 text-secondary" />
+        <div className="bg-white rounded-xl p-4 sm:p-6 shadow-sm border border-gray-100">
+          <div className="flex items-center justify-between mb-2 sm:mb-4">
+            <MessageSquare className="w-6 h-6 sm:w-8 sm:h-8 text-secondary" />
           </div>
-          <p className="text-2xl font-bold text-gray-900">0%</p>
-          <p className="text-sm text-gray-500">Reply Rate</p>
+          <p className="text-xl sm:text-2xl font-bold text-gray-900">0%</p>
+          <p className="text-xs sm:text-sm text-gray-500">Reply Rate</p>
         </div>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 mb-6 lg:mb-8">
         {/* Weekly Leads Chart */}
-        <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
-          <h2 className="text-lg font-semibold text-gray-900 mb-6">Weekly Leads</h2>
-          <div className="flex items-end gap-4 h-48">
+        <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-4 sm:p-6">
+          <h2 className="text-base sm:text-lg font-semibold text-gray-900 mb-4 sm:mb-6">Weekly Leads</h2>
+          <div className="flex items-end gap-2 sm:gap-4 h-36 sm:h-48">
             {weeklyData.map((day) => (
               <div key={day.day} className="flex-1 flex flex-col items-center">
                 <div
@@ -103,16 +103,16 @@ export default function AnalyticsPage() {
                   style={{ height: `${(day.leads / maxLeads) * 100}%`, minHeight: '8px' }}
                 ></div>
                 <p className="text-xs text-gray-500 mt-2">{day.day}</p>
-                <p className="text-sm font-semibold">{day.leads}</p>
+                <p className="text-xs sm:text-sm font-semibold">{day.leads}</p>
               </div>
             ))}
           </div>
         </div>
 
         {/* Weekly Emails Chart */}
-        <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
-          <h2 className="text-lg font-semibold text-gray-900 mb-6">Weekly Emails</h2>
-          <div className="flex items-end gap-4 h-48">
+        <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-4 sm:p-6">
+          <h2 className="text-base sm:text-lg font-semibold text-gray-900 mb-4 sm:mb-6">Weekly Emails</h2>
+          <div className="flex items-end gap-2 sm:gap-4 h-36 sm:h-48">
             {weeklyData.map((day) => (
               <div key={day.day} className="flex-1 flex flex-col items-center">
                 <div
@@ -120,23 +120,23 @@ export default function AnalyticsPage() {
                   style={{ height: `${(day.emails / maxEmails) * 100}%`, minHeight: '8px' }}
                 ></div>
                 <p className="text-xs text-gray-500 mt-2">{day.day}</p>
-                <p className="text-sm font-semibold">{day.emails}</p>
+                <p className="text-xs sm:text-sm font-semibold">{day.emails}</p>
               </div>
             ))}
           </div>
         </div>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
         {/* Lead Sources */}
-        <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
-          <h2 className="text-lg font-semibold text-gray-900 mb-6">Lead Sources</h2>
+        <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-4 sm:p-6">
+          <h2 className="text-base sm:text-lg font-semibold text-gray-900 mb-4 sm:mb-6">Lead Sources</h2>
           <div className="space-y-4">
             {sourceData.map((source) => (
               <div key={source.source}>
                 <div className="flex items-center justify-between mb-1">
-                  <span className="text-sm font-medium text-gray-700">{source.source}</span>
-                  <span className="text-sm text-gray-500">{source.leads} leads ({source.percentage}%)</span>
+                  <span className="text-xs sm:text-sm font-medium text-gray-700">{source.source}</span>
+                  <span className="text-xs sm:text-sm text-gray-500">{source.leads} leads ({source.percentage}%)</span>
                 </div>
                 <div className="bg-gray-200 rounded-full h-2">
                   <div
@@ -150,10 +150,10 @@ export default function AnalyticsPage() {
         </div>
 
         {/* Top Performing Emails */}
-        <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
-          <h2 className="text-lg font-semibold text-gray-900 mb-6">Top Performing Emails</h2>
+        <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-4 sm:p-6">
+          <h2 className="text-base sm:text-lg font-semibold text-gray-900 mb-4 sm:mb-6">Top Performing Emails</h2>
           <div className="overflow-x-auto">
-            <table className="w-full">
+            <table className="w-full min-w-[400px]">
               <thead>
                 <tr className="text-left text-xs text-gray-500 border-b border-gray-100">
                   <th className="pb-3">Template</th>
@@ -165,7 +165,7 @@ export default function AnalyticsPage() {
               </thead>
               <tbody className="divide-y divide-gray-100">
                 {topPerformingEmails.map((email) => (
-                  <tr key={email.template} className="text-sm">
+                  <tr key={email.template} className="text-xs sm:text-sm">
                     <td className="py-3 font-medium text-gray-900">{email.template}</td>
                     <td className="py-3 text-gray-600">{email.sent}</td>
                     <td className="py-3">
@@ -192,38 +192,38 @@ export default function AnalyticsPage() {
       </div>
 
       {/* Conversion Funnel */}
-      <div className="mt-8 bg-white rounded-xl shadow-sm border border-gray-100 p-6">
-        <h2 className="text-lg font-semibold text-gray-900 mb-6">Conversion Funnel</h2>
-        <div className="flex items-center justify-between gap-4">
-          <div className="flex-1 text-center">
-            <div className="bg-blue-100 rounded-lg p-6 mb-2">
-              <p className="text-3xl font-bold text-blue-800">0</p>
+      <div className="mt-6 lg:mt-8 bg-white rounded-xl shadow-sm border border-gray-100 p-4 sm:p-6">
+        <h2 className="text-base sm:text-lg font-semibold text-gray-900 mb-4 sm:mb-6">Conversion Funnel</h2>
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div className="flex-1 text-center w-full">
+            <div className="bg-blue-100 rounded-lg p-4 sm:p-6 mb-2">
+              <p className="text-2xl sm:text-3xl font-bold text-blue-800">0</p>
             </div>
-            <p className="text-sm text-gray-600">Emails Sent</p>
+            <p className="text-xs sm:text-sm text-gray-600">Emails Sent</p>
             <p className="text-xs text-gray-400">0%</p>
           </div>
-          <div className="text-2xl text-gray-300">→</div>
-          <div className="flex-1 text-center">
-            <div className="bg-green-100 rounded-lg p-6 mb-2">
-              <p className="text-3xl font-bold text-green-800">0</p>
+          <div className="text-2xl text-gray-300 rotate-90 sm:rotate-0">→</div>
+          <div className="flex-1 text-center w-full">
+            <div className="bg-green-100 rounded-lg p-4 sm:p-6 mb-2">
+              <p className="text-2xl sm:text-3xl font-bold text-green-800">0</p>
             </div>
-            <p className="text-sm text-gray-600">Opened</p>
+            <p className="text-xs sm:text-sm text-gray-600">Opened</p>
             <p className="text-xs text-gray-400">0%</p>
           </div>
-          <div className="text-2xl text-gray-300">→</div>
-          <div className="flex-1 text-center">
-            <div className="bg-purple-100 rounded-lg p-6 mb-2">
-              <p className="text-3xl font-bold text-purple-800">0</p>
+          <div className="text-2xl text-gray-300 rotate-90 sm:rotate-0">→</div>
+          <div className="flex-1 text-center w-full">
+            <div className="bg-purple-100 rounded-lg p-4 sm:p-6 mb-2">
+              <p className="text-2xl sm:text-3xl font-bold text-purple-800">0</p>
             </div>
-            <p className="text-sm text-gray-600">Clicked</p>
+            <p className="text-xs sm:text-sm text-gray-600">Clicked</p>
             <p className="text-xs text-gray-400">0%</p>
           </div>
-          <div className="text-2xl text-gray-300">→</div>
-          <div className="flex-1 text-center">
-            <div className="bg-secondary/20 rounded-lg p-6 mb-2">
-              <p className="text-3xl font-bold text-primary">0</p>
+          <div className="text-2xl text-gray-300 rotate-90 sm:rotate-0">→</div>
+          <div className="flex-1 text-center w-full">
+            <div className="bg-secondary/20 rounded-lg p-4 sm:p-6 mb-2">
+              <p className="text-2xl sm:text-3xl font-bold text-primary">0</p>
             </div>
-            <p className="text-sm text-gray-600">Replied</p>
+            <p className="text-xs sm:text-sm text-gray-600">Replied</p>
             <p className="text-xs text-gray-400">0%</p>
           </div>
         </div>
