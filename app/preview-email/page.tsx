@@ -2,12 +2,10 @@
 
 import { useState } from 'react';
 import { defaultTemplates } from '@/lib/templates';
-import { Monitor, Smartphone, Tablet } from 'lucide-react';
 
 export default function PreviewEmailPage() {
   const [selectedTemplate, setSelectedTemplate] = useState(defaultTemplates[0]);
   const [leadName, setLeadName] = useState('Ahmed');
-  const [viewMode, setViewMode] = useState<'desktop' | 'tablet' | 'mobile'>('desktop');
 
   // Replace placeholders with sample data
   const getPreviewHtml = () => {
@@ -15,14 +13,6 @@ export default function PreviewEmailPage() {
       .replace(/\{\{name\}\}/g, leadName)
       .replace(/\{\{full_name\}\}/g, leadName + ' Hassan')
       .replace(/\{\{company\}\}/g, 'Golden Properties');
-  };
-
-  const getPreviewWidth = () => {
-    switch (viewMode) {
-      case 'mobile': return '375px';
-      case 'tablet': return '768px';
-      default: return '100%';
-    }
   };
 
   return (
@@ -35,7 +25,7 @@ export default function PreviewEmailPage() {
 
       {/* Controls */}
       <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-4 sm:p-6 mb-6 lg:mb-8">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">Select Template</label>
             <select
@@ -63,44 +53,6 @@ export default function PreviewEmailPage() {
               placeholder="Enter name"
             />
           </div>
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">Preview Size</label>
-            <div className="flex gap-2">
-              <button
-                onClick={() => setViewMode('desktop')}
-                className={`flex-1 flex items-center justify-center gap-2 px-3 py-2 rounded-lg border transition-colors ${
-                  viewMode === 'desktop'
-                    ? 'bg-red-500 text-white border-red-500'
-                    : 'bg-white text-gray-600 border-gray-200 hover:bg-gray-50'
-                }`}
-              >
-                <Monitor className="w-4 h-4" />
-                <span className="hidden sm:inline text-sm">Desktop</span>
-              </button>
-              <button
-                onClick={() => setViewMode('tablet')}
-                className={`flex-1 flex items-center justify-center gap-2 px-3 py-2 rounded-lg border transition-colors ${
-                  viewMode === 'tablet'
-                    ? 'bg-red-500 text-white border-red-500'
-                    : 'bg-white text-gray-600 border-gray-200 hover:bg-gray-50'
-                }`}
-              >
-                <Tablet className="w-4 h-4" />
-                <span className="hidden sm:inline text-sm">Tablet</span>
-              </button>
-              <button
-                onClick={() => setViewMode('mobile')}
-                className={`flex-1 flex items-center justify-center gap-2 px-3 py-2 rounded-lg border transition-colors ${
-                  viewMode === 'mobile'
-                    ? 'bg-red-500 text-white border-red-500'
-                    : 'bg-white text-gray-600 border-gray-200 hover:bg-gray-50'
-                }`}
-              >
-                <Smartphone className="w-4 h-4" />
-                <span className="hidden sm:inline text-sm">Mobile</span>
-              </button>
-            </div>
-          </div>
         </div>
       </div>
 
@@ -124,14 +76,11 @@ export default function PreviewEmailPage() {
 
       {/* Email Preview */}
       <div className="bg-gray-200 rounded-b-xl shadow-sm border border-gray-200 overflow-hidden p-2 sm:p-4">
-        <div
-          className="mx-auto transition-all duration-300 bg-white rounded-lg overflow-hidden shadow-lg"
-          style={{ maxWidth: getPreviewWidth() }}
-        >
+        <div className="mx-auto bg-white rounded-lg overflow-hidden shadow-lg" style={{ maxWidth: '600px' }}>
           <iframe
             srcDoc={getPreviewHtml()}
             className="w-full border-0"
-            style={{ height: viewMode === 'mobile' ? '700px' : '600px' }}
+            style={{ height: '600px' }}
             title="Email Preview"
           />
         </div>
