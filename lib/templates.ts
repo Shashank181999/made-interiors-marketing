@@ -50,7 +50,7 @@ export const defaultTemplates = [
 
           <!-- Header with Logo -->
           <tr>
-            <td style="background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%); padding: 40px 20px; text-align: center;">
+            <td style="background: linear-gradient(135deg, #1a1a1a 0%, #2d1a1a 50%, #1a1a1a 100%); padding: 40px 20px; text-align: center; border-radius: 16px 16px 0 0;">
               ${LOGO_HTML}
               <p style="margin: 15px 0 0; font-size: 11px; color: #888888; letter-spacing: 3px; text-transform: uppercase;">Dubai's Premier Design Studio</p>
             </td>
@@ -111,7 +111,7 @@ export const defaultTemplates = [
 
           <!-- Footer -->
           <tr>
-            <td style="background-color: #000000; padding: 40px 20px; text-align: center;">
+            <td style="background: linear-gradient(135deg, #2a1515 0%, #1a0a0a 100%); padding: 40px 20px; text-align: center; border-radius: 0 0 16px 16px;">
               ${LOGO_HTML_SMALL}
               <p style="margin: 20px 0; color: #888888; font-size: 13px;">Dubai Design District, Dubai, UAE</p>
               <p style="margin: 0 0 15px; color: #cccccc; font-size: 11px;">© 2024 Made Interiors. All rights reserved.</p>
@@ -154,7 +154,7 @@ export const defaultTemplates = [
 
           <!-- Header with Logo -->
           <tr>
-            <td style="background: #000000; padding: 30px 20px; text-align: center;">
+            <td style="background: linear-gradient(135deg, #1a1a1a 0%, #2d1a1a 50%, #1a1a1a 100%); padding: 30px 20px; text-align: center; border-radius: 16px 16px 0 0;">
               ${LOGO_HTML}
             </td>
           </tr>
@@ -162,7 +162,7 @@ export const defaultTemplates = [
           <!-- Content -->
           <tr>
             <td class="email-content" style="padding: 50px 40px 30px;">
-              <h2 class="hero-title" style="margin: 0 0 20px; font-size: 28px; color: #ffffff; font-weight: 400;">Hi {{name}},</h2>
+              <h2 class="hero-title" style="margin: 0 0 20px; font-size: 28px; color: #1a1a1a; font-weight: 400;">Hi {{name}},</h2>
 
               <p style="margin: 0 0 30px; font-size: 16px; line-height: 1.8; color: #555555;">
                 I wanted to share some of our recent interior design projects that I thought might inspire your own vision.
@@ -174,7 +174,7 @@ export const defaultTemplates = [
           <tr>
             <td style="padding: 0 20px 30px;">
               <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=520&h=280&fit=crop" alt="Downtown Penthouse" style="width: 100%; border-radius: 12px; display: block;">
-              <h3 style="margin: 20px 0 10px; font-size: 18px; color: #ffffff;">Downtown Dubai Penthouse</h3>
+              <h3 style="margin: 20px 0 10px; font-size: 18px; color: #1a1a1a;">Downtown Dubai Penthouse</h3>
               <p style="margin: 0; font-size: 14px; color: #777; line-height: 1.6;">4,000 sq ft of contemporary luxury featuring custom Italian furniture, marble finishes, and panoramic city views.</p>
             </td>
           </tr>
@@ -183,7 +183,7 @@ export const defaultTemplates = [
           <tr>
             <td style="padding: 0 20px 30px;">
               <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=520&h=280&fit=crop" alt="Business Bay Office" style="width: 100%; border-radius: 12px; display: block;">
-              <h3 style="margin: 20px 0 10px; font-size: 18px; color: #ffffff;">Business Bay Corporate Office</h3>
+              <h3 style="margin: 20px 0 10px; font-size: 18px; color: #1a1a1a;">Business Bay Corporate Office</h3>
               <p style="margin: 0; font-size: 14px; color: #777; line-height: 1.6;">Modern workspace featuring collaborative areas, acoustic solutions, and biophilic design elements.</p>
             </td>
           </tr>
@@ -192,7 +192,7 @@ export const defaultTemplates = [
           <tr>
             <td style="padding: 0 20px 30px;">
               <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=520&h=280&fit=crop" alt="Palm Villa" style="width: 100%; border-radius: 12px; display: block;">
-              <h3 style="margin: 20px 0 10px; font-size: 18px; color: #ffffff;">Palm Jumeirah Villa</h3>
+              <h3 style="margin: 20px 0 10px; font-size: 18px; color: #1a1a1a;">Palm Jumeirah Villa</h3>
               <p style="margin: 0; font-size: 14px; color: #777; line-height: 1.6;">Mediterranean-inspired beach villa with custom millwork, imported natural stones, and smart home integration.</p>
             </td>
           </tr>
@@ -209,7 +209,7 @@ export const defaultTemplates = [
 
           <!-- Footer -->
           <tr>
-            <td style="background-color: #000000; padding: 30px 20px; text-align: center;">
+            <td style="background: linear-gradient(135deg, #2a1515 0%, #1a0a0a 100%); padding: 30px 20px; text-align: center; border-radius: 0 0 16px 16px;">
               ${LOGO_HTML_SMALL}
               <p style="margin: 15px 0; color: #888888; font-size: 12px;">Made Interiors | Dubai, UAE</p>
               <a href="${WEBSITE_URL}/unsubscribe" style="color: #cccccc; font-size: 11px; text-decoration: underline;">Unsubscribe</a>
@@ -251,7 +251,7 @@ export const defaultTemplates = [
 
           <!-- Header with Logo -->
           <tr>
-            <td style="padding: 30px 20px; text-align: center; ">
+            <td style="background: linear-gradient(135deg, #f8f8f8 0%, #f0e8e8 50%, #f8f8f8 100%); padding: 30px 20px; text-align: center; border-radius: 16px 16px 0 0;">
               ${LOGO_HTML_DARK}
             </td>
           </tr>
@@ -259,7 +259,7 @@ export const defaultTemplates = [
           <!-- Content -->
           <tr>
             <td class="email-content" style="padding: 40px;">
-              <h2 class="hero-title" style="margin: 0 0 25px; font-size: 26px; color: #ffffff; font-weight: 400;">Hi {{name}},</h2>
+              <h2 class="hero-title" style="margin: 0 0 25px; font-size: 26px; color: #1a1a1a; font-weight: 400;">Hi {{name}},</h2>
 
               <p style="margin: 0 0 25px; font-size: 16px; line-height: 1.8; color: #555555;">
                 I reached out a few days ago about Made Interiors. I wanted to follow up and see if you have any questions about our design services.
@@ -322,16 +322,16 @@ export const defaultTemplates = [
 
               <p style="margin: 35px 0 0; font-size: 15px; color: #555555;">
                 Best regards,<br>
-                <strong style="color: #ffffff;">Made Interiors Team</strong>
+                <strong style="color: #1a1a1a;">Made Interiors Team</strong>
               </p>
             </td>
           </tr>
 
           <!-- Footer -->
           <tr>
-            <td style="background-color: #000000; padding: 25px 20px; text-align: center; ">
-              <p style="margin: 0 0 10px; color: #ffffff; font-size: 12px;">Made Interiors | Dubai Design District, UAE</p>
-              <a href="${WEBSITE_URL}/unsubscribe" style="color: #ffffff; font-size: 11px; text-decoration: underline;">Unsubscribe</a>
+            <td style="background: linear-gradient(135deg, #3d2020 0%, #2a1515 100%); padding: 25px 20px; text-align: center; border-radius: 0 0 16px 16px;">
+              <p style="margin: 0 0 10px; color: #cccccc; font-size: 12px;">Made Interiors | Dubai Design District, UAE</p>
+              <a href="${WEBSITE_URL}/unsubscribe" style="color: #c9a962; font-size: 11px; text-decoration: underline;">Unsubscribe</a>
             </td>
           </tr>
 
@@ -371,7 +371,7 @@ export const defaultTemplates = [
 
           <!-- Header with Logo -->
           <tr>
-            <td style="padding: 30px 20px; text-align: center; ">
+            <td style="background: linear-gradient(135deg, #f8f8f8 0%, #f0e8e8 50%, #f8f8f8 100%); padding: 30px 20px; text-align: center; border-radius: 16px 16px 0 0;">
               ${LOGO_HTML_DARK}
             </td>
           </tr>
@@ -379,7 +379,7 @@ export const defaultTemplates = [
           <!-- Content -->
           <tr>
             <td class="email-content" style="padding: 40px;">
-              <h2 class="hero-title" style="margin: 0 0 25px; font-size: 26px; color: #ffffff; font-weight: 400;">Hi {{name}},</h2>
+              <h2 class="hero-title" style="margin: 0 0 25px; font-size: 26px; color: #1a1a1a; font-weight: 400;">Hi {{name}},</h2>
 
               <p style="margin: 0 0 25px; font-size: 16px; line-height: 1.8; color: #555555;">
                 I don't want to keep filling your inbox, so this will be my last message.
@@ -415,17 +415,17 @@ export const defaultTemplates = [
 
               <p style="margin: 35px 0 0; font-size: 15px; color: #555555;">
                 Wishing you well,<br>
-                <strong style="color: #ffffff;">Made Interiors Team</strong>
+                <strong style="color: #1a1a1a;">Made Interiors Team</strong>
               </p>
             </td>
           </tr>
 
           <!-- Footer -->
           <tr>
-            <td style="background-color: #000000; padding: 25px 20px; text-align: center; ">
-              <p style="margin: 0 0 5px; color: #ffffff; font-size: 11px;">We won't email you again unless you reach out.</p>
-              <p style="margin: 0 0 10px; color: #ffffff; font-size: 11px;">Made Interiors | Dubai, UAE</p>
-              <a href="${WEBSITE_URL}/unsubscribe" style="color: #ffffff; font-size: 11px; text-decoration: underline;">Unsubscribe</a>
+            <td style="background: linear-gradient(135deg, #3d2020 0%, #2a1515 100%); padding: 25px 20px; text-align: center; border-radius: 0 0 16px 16px;">
+              <p style="margin: 0 0 5px; color: #cccccc; font-size: 11px;">We won't email you again unless you reach out.</p>
+              <p style="margin: 0 0 10px; color: #cccccc; font-size: 11px;">Made Interiors | Dubai, UAE</p>
+              <a href="${WEBSITE_URL}/unsubscribe" style="color: #c9a962; font-size: 11px; text-decoration: underline;">Unsubscribe</a>
             </td>
           </tr>
 
@@ -465,8 +465,8 @@ export const defaultTemplates = [
 
           <!-- Header with Logo -->
           <tr>
-            <td style="background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); padding: 30px 20px; text-align: center;">
-              <p style="margin: 0 0 15px; font-size: 11px; letter-spacing: 3px; color: #888; text-transform: uppercase;">Exclusive Offer</p>
+            <td style="background: linear-gradient(135deg, #1a1a1a 0%, #2d1a1a 50%, #1a1a1a 100%); padding: 30px 20px; text-align: center; border-radius: 16px 16px 0 0;">
+              <p style="margin: 0 0 15px; font-size: 11px; letter-spacing: 3px; color: #c9a962; text-transform: uppercase;">Exclusive Offer</p>
               ${LOGO_HTML}
             </td>
           </tr>
@@ -483,14 +483,14 @@ export const defaultTemplates = [
           <!-- Content -->
           <tr>
             <td class="email-content" style="padding: 50px 40px;">
-              <h2 class="hero-title" style="margin: 0 0 20px; font-size: 24px; color: #ffffff; font-weight: 400;">Hi {{name}},</h2>
+              <h2 class="hero-title" style="margin: 0 0 20px; font-size: 24px; color: #1a1a1a; font-weight: 400;">Hi {{name}},</h2>
 
               <p style="margin: 0 0 25px; font-size: 16px; line-height: 1.8; color: #555555;">
                 As a valued connection, we're excited to offer you an exclusive <strong>15% discount</strong> on all our interior design and fit-out services this month.
               </p>
 
               <!-- What's Included -->
-              <h3 style="margin: 30px 0 20px; font-size: 16px; color: #ffffff; text-transform: uppercase; letter-spacing: 1px;">This Includes:</h3>
+              <h3 style="margin: 30px 0 20px; font-size: 16px; color: #1a1a1a; text-transform: uppercase; letter-spacing: 1px;">This Includes:</h3>
 
               <table width="100%" cellpadding="0" cellspacing="0" style="margin: 0 0 30px;">
                 <tr>
@@ -554,10 +554,10 @@ export const defaultTemplates = [
 
           <!-- Footer -->
           <tr>
-            <td style="background-color: #000000; padding: 30px 20px; text-align: center;">
+            <td style="background: linear-gradient(135deg, #2a1515 0%, #1a0a0a 100%); padding: 30px 20px; text-align: center; border-radius: 0 0 16px 16px;">
               ${LOGO_HTML_SMALL}
               <p style="margin: 15px 0; color: #cccccc; font-size: 11px;">Dubai Design District, Dubai, UAE</p>
-              <a href="${WEBSITE_URL}/unsubscribe" style="color: #cccccc; font-size: 11px; text-decoration: underline;">Unsubscribe</a>
+              <a href="${WEBSITE_URL}/unsubscribe" style="color: #c9a962; font-size: 11px; text-decoration: underline;">Unsubscribe</a>
             </td>
           </tr>
 
