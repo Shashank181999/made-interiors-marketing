@@ -5,20 +5,20 @@ const BRAND_RED = '#ea1515';
 const BRAND_BLACK = '#000000';
 // For emails, we need a hosted PNG/JPG version of the logo
 // Using a placeholder that will show the brand name beautifully
-const LOGO_HTML = `<div style="display: inline-block; padding: 10px 20px;">
+const LOGO_HTML = `<a href="${WEBSITE_URL}" style="display: inline-block; padding: 10px 20px; text-decoration: none;">
   <span style="font-size: 24px; font-weight: 300; letter-spacing: 4px; color: ${BRAND_RED};">MADE</span>
   <span style="font-size: 24px; font-weight: 300; letter-spacing: 4px; color: #ffffff; margin-left: 5px;">INTERIORS</span>
-</div>`;
+</a>`;
 
-const LOGO_HTML_DARK = `<div style="display: inline-block; padding: 10px 20px;">
+const LOGO_HTML_DARK = `<a href="${WEBSITE_URL}" style="display: inline-block; padding: 10px 20px; text-decoration: none;">
   <span style="font-size: 24px; font-weight: 300; letter-spacing: 4px; color: ${BRAND_RED};">MADE</span>
   <span style="font-size: 24px; font-weight: 300; letter-spacing: 4px; color: ${BRAND_BLACK}; margin-left: 5px;">INTERIORS</span>
-</div>`;
+</a>`;
 
-const LOGO_HTML_SMALL = `<div style="display: inline-block;">
+const LOGO_HTML_SMALL = `<a href="${WEBSITE_URL}" style="display: inline-block; text-decoration: none;">
   <span style="font-size: 16px; font-weight: 300; letter-spacing: 3px; color: ${BRAND_RED};">MADE</span>
   <span style="font-size: 16px; font-weight: 300; letter-spacing: 3px; color: #888888; margin-left: 3px;">INTERIORS</span>
-</div>`;
+</a>`;
 
 export const defaultTemplates = [
   {
