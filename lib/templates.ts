@@ -1,5 +1,8 @@
 // Logo and website URLs
 const WEBSITE_URL = 'https://madeinteriorsdemo.web.app';
+// For local dev, use localhost. For production, use your deployed URL.
+const BASE_URL = process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000';
+const BOOKING_URL = `${BASE_URL}/book`;
 // Brand colors from logo
 const BRAND_RED = '#ea1515';
 const BRAND_BLACK = '#000000';
@@ -50,9 +53,9 @@ export const defaultTemplates = [
 
           <!-- Header with Logo -->
           <tr>
-            <td style="background: linear-gradient(135deg, #1a1a1a 0%, #2d1a1a 50%, #1a1a1a 100%); padding: 40px 20px; text-align: center; border-radius: 16px 16px 0 0;">
+            <td style="background-color: #000000; padding: 35px 20px; text-align: center; border-radius: 16px 16px 0 0;">
               ${LOGO_HTML}
-              <p style="margin: 15px 0 0; font-size: 11px; color: #888888; letter-spacing: 3px; text-transform: uppercase;">Dubai's Premier Design Studio</p>
+              <p style="margin: 12px 0 0; font-size: 10px; color: #666666; letter-spacing: 2px; text-transform: uppercase;">Dubai's Premier Design Studio</p>
             </td>
           </tr>
 
@@ -96,11 +99,18 @@ export const defaultTemplates = [
                 </tr>
               </table>
 
-              <!-- CTA -->
+              <!-- CTA Buttons -->
               <table width="100%" cellpadding="0" cellspacing="0">
                 <tr>
                   <td align="center" style="padding: 20px 0;">
-                    <a href="${WEBSITE_URL}" style="display: inline-block; background: linear-gradient(135deg, #c9a962 0%, #b8944d 100%); color: #ffffff; text-decoration: none; padding: 18px 50px; border-radius: 30px; font-size: 14px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase;">
+                    <a href="${BOOKING_URL}" style="display: inline-block; background: linear-gradient(135deg, ${BRAND_RED} 0%, #c91010 100%); color: #ffffff; text-decoration: none; padding: 18px 50px; border-radius: 30px; font-size: 14px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 15px;">
+                      Book Free Consultation
+                    </a>
+                  </td>
+                </tr>
+                <tr>
+                  <td align="center" style="padding: 0 0 20px;">
+                    <a href="${WEBSITE_URL}" style="display: inline-block; background: transparent; color: #333333; text-decoration: none; padding: 14px 40px; border-radius: 30px; font-size: 13px; font-weight: 500; letter-spacing: 1px; border: 2px solid #dddddd;">
                       View Our Portfolio
                     </a>
                   </td>
@@ -111,11 +121,11 @@ export const defaultTemplates = [
 
           <!-- Footer -->
           <tr>
-            <td style="background: linear-gradient(135deg, #2a1515 0%, #1a0a0a 100%); padding: 40px 20px; text-align: center; border-radius: 0 0 16px 16px;">
+            <td style="background-color: #000000; padding: 30px 20px; text-align: center; border-radius: 0 0 16px 16px;">
               ${LOGO_HTML_SMALL}
-              <p style="margin: 20px 0; color: #888888; font-size: 13px;">Dubai Design District, Dubai, UAE</p>
-              <p style="margin: 0 0 15px; color: #cccccc; font-size: 11px;">© 2024 Made Interiors. All rights reserved.</p>
-              <a href="${WEBSITE_URL}/unsubscribe" style="color: #888888; font-size: 11px; text-decoration: underline;">Unsubscribe from emails</a>
+              <p style="margin: 15px 0 8px; color: #666666; font-size: 12px;">Dubai Design District, Dubai, UAE</p>
+              <p style="margin: 0 0 12px; color: #444444; font-size: 11px;">© 2024 Made Interiors. All rights reserved.</p>
+              <a href="${WEBSITE_URL}/unsubscribe" style="color: #ea1515; font-size: 11px; text-decoration: none;">Unsubscribe</a>
             </td>
           </tr>
 
@@ -154,7 +164,7 @@ export const defaultTemplates = [
 
           <!-- Header with Logo -->
           <tr>
-            <td style="background: linear-gradient(135deg, #1a1a1a 0%, #2d1a1a 50%, #1a1a1a 100%); padding: 30px 20px; text-align: center; border-radius: 16px 16px 0 0;">
+            <td style="background-color: #000000; padding: 35px 20px; text-align: center; border-radius: 16px 16px 0 0;">
               ${LOGO_HTML}
             </td>
           </tr>
@@ -201,18 +211,22 @@ export const defaultTemplates = [
           <tr>
             <td style="padding: 20px 20px 50px; text-align: center;">
               <p style="margin: 0 0 25px; font-size: 16px; color: #555;">Would any of these styles work for your space?</p>
-              <a href="${WEBSITE_URL}" style="display: inline-block; background: #c9a962; color: #ffffff; text-decoration: none; padding: 16px 45px; border-radius: 30px; font-size: 14px; font-weight: 600; letter-spacing: 1px;">
-                VIEW FULL PORTFOLIO
+              <a href="${BOOKING_URL}" style="display: inline-block; background: linear-gradient(135deg, ${BRAND_RED} 0%, #c91010 100%); color: #ffffff; text-decoration: none; padding: 16px 45px; border-radius: 30px; font-size: 14px; font-weight: 600; letter-spacing: 1px; margin-bottom: 15px;">
+                Book Free Consultation
+              </a>
+              <br><br>
+              <a href="${WEBSITE_URL}" style="display: inline-block; color: #333333; text-decoration: none; padding: 12px 35px; border-radius: 30px; font-size: 13px; font-weight: 500; border: 2px solid #dddddd;">
+                View Full Portfolio
               </a>
             </td>
           </tr>
 
           <!-- Footer -->
           <tr>
-            <td style="background: linear-gradient(135deg, #2a1515 0%, #1a0a0a 100%); padding: 30px 20px; text-align: center; border-radius: 0 0 16px 16px;">
+            <td style="background-color: #000000; padding: 30px 20px; text-align: center; border-radius: 0 0 16px 16px;">
               ${LOGO_HTML_SMALL}
               <p style="margin: 15px 0; color: #888888; font-size: 12px;">Made Interiors | Dubai, UAE</p>
-              <a href="${WEBSITE_URL}/unsubscribe" style="color: #cccccc; font-size: 11px; text-decoration: underline;">Unsubscribe</a>
+              <a href="${WEBSITE_URL}/unsubscribe" style="color: #ea1515; font-size: 11px; text-decoration: none;">Unsubscribe</a>
             </td>
           </tr>
 
@@ -251,8 +265,8 @@ export const defaultTemplates = [
 
           <!-- Header with Logo -->
           <tr>
-            <td style="background: linear-gradient(135deg, #f8f8f8 0%, #f0e8e8 50%, #f8f8f8 100%); padding: 30px 20px; text-align: center; border-radius: 16px 16px 0 0;">
-              ${LOGO_HTML_DARK}
+            <td style="background-color: #000000; padding: 35px 20px; text-align: center; border-radius: 16px 16px 0 0;">
+              ${LOGO_HTML}
             </td>
           </tr>
 
@@ -313,7 +327,7 @@ export const defaultTemplates = [
               <table width="100%" cellpadding="0" cellspacing="0">
                 <tr>
                   <td align="center">
-                    <a href="${WEBSITE_URL}" style="display: inline-block; background: #000000; color: #ffffff; text-decoration: none; padding: 16px 40px; border-radius: 30px; font-size: 14px; font-weight: 500;">
+                    <a href="${BOOKING_URL}" style="display: inline-block; background: linear-gradient(135deg, ${BRAND_RED} 0%, #c91010 100%); color: #ffffff; text-decoration: none; padding: 16px 40px; border-radius: 30px; font-size: 14px; font-weight: 600; letter-spacing: 1px;">
                       Book Free Consultation
                     </a>
                   </td>
@@ -329,9 +343,9 @@ export const defaultTemplates = [
 
           <!-- Footer -->
           <tr>
-            <td style="background: linear-gradient(135deg, #3d2020 0%, #2a1515 100%); padding: 25px 20px; text-align: center; border-radius: 0 0 16px 16px;">
-              <p style="margin: 0 0 10px; color: #cccccc; font-size: 12px;">Made Interiors | Dubai Design District, UAE</p>
-              <a href="${WEBSITE_URL}/unsubscribe" style="color: #c9a962; font-size: 11px; text-decoration: underline;">Unsubscribe</a>
+            <td style="background-color: #000000; padding: 30px 20px; text-align: center; border-radius: 0 0 16px 16px;">
+              <p style="margin: 0 0 10px; color: #888888; font-size: 12px;">Made Interiors | Dubai Design District, UAE</p>
+              <a href="${WEBSITE_URL}/unsubscribe" style="color: #ea1515; font-size: 11px; text-decoration: none;">Unsubscribe</a>
             </td>
           </tr>
 
@@ -371,8 +385,8 @@ export const defaultTemplates = [
 
           <!-- Header with Logo -->
           <tr>
-            <td style="background: linear-gradient(135deg, #f8f8f8 0%, #f0e8e8 50%, #f8f8f8 100%); padding: 30px 20px; text-align: center; border-radius: 16px 16px 0 0;">
-              ${LOGO_HTML_DARK}
+            <td style="background-color: #000000; padding: 35px 20px; text-align: center; border-radius: 16px 16px 0 0;">
+              ${LOGO_HTML}
             </td>
           </tr>
 
@@ -406,7 +420,7 @@ export const defaultTemplates = [
               <table width="100%" cellpadding="0" cellspacing="0">
                 <tr>
                   <td align="center">
-                    <a href="${WEBSITE_URL}" style="display: inline-block; background: #c9a962; color: #ffffff; text-decoration: none; padding: 16px 40px; border-radius: 30px; font-size: 14px; font-weight: 600;">
+                    <a href="${BOOKING_URL}" style="display: inline-block; background: linear-gradient(135deg, ${BRAND_RED} 0%, #c91010 100%); color: #ffffff; text-decoration: none; padding: 16px 40px; border-radius: 30px; font-size: 14px; font-weight: 600;">
                       Claim Free Consultation
                     </a>
                   </td>
@@ -422,10 +436,10 @@ export const defaultTemplates = [
 
           <!-- Footer -->
           <tr>
-            <td style="background: linear-gradient(135deg, #3d2020 0%, #2a1515 100%); padding: 25px 20px; text-align: center; border-radius: 0 0 16px 16px;">
-              <p style="margin: 0 0 5px; color: #cccccc; font-size: 11px;">We won't email you again unless you reach out.</p>
-              <p style="margin: 0 0 10px; color: #cccccc; font-size: 11px;">Made Interiors | Dubai, UAE</p>
-              <a href="${WEBSITE_URL}/unsubscribe" style="color: #c9a962; font-size: 11px; text-decoration: underline;">Unsubscribe</a>
+            <td style="background-color: #000000; padding: 30px 20px; text-align: center; border-radius: 0 0 16px 16px;">
+              <p style="margin: 0 0 5px; color: #888888; font-size: 11px;">We won't email you again unless you reach out.</p>
+              <p style="margin: 0 0 10px; color: #666666; font-size: 11px;">Made Interiors | Dubai, UAE</p>
+              <a href="${WEBSITE_URL}/unsubscribe" style="color: #ea1515; font-size: 11px; text-decoration: none;">Unsubscribe</a>
             </td>
           </tr>
 
@@ -465,7 +479,7 @@ export const defaultTemplates = [
 
           <!-- Header with Logo -->
           <tr>
-            <td style="background: linear-gradient(135deg, #1a1a1a 0%, #2d1a1a 50%, #1a1a1a 100%); padding: 30px 20px; text-align: center; border-radius: 16px 16px 0 0;">
+            <td style="background-color: #000000; padding: 35px 20px; text-align: center; border-radius: 16px 16px 0 0;">
               <p style="margin: 0 0 15px; font-size: 11px; letter-spacing: 3px; color: #c9a962; text-transform: uppercase;">Exclusive Offer</p>
               ${LOGO_HTML}
             </td>
@@ -543,8 +557,8 @@ export const defaultTemplates = [
               <table width="100%" cellpadding="0" cellspacing="0">
                 <tr>
                   <td align="center">
-                    <a href="${WEBSITE_URL}" style="display: inline-block; background: #000000; color: #c9a962; text-decoration: none; padding: 18px 40px; border-radius: 30px; font-size: 14px; font-weight: 600; letter-spacing: 1px;">
-                      CLAIM YOUR DISCOUNT
+                    <a href="${BOOKING_URL}" style="display: inline-block; background: linear-gradient(135deg, ${BRAND_RED} 0%, #c91010 100%); color: #ffffff; text-decoration: none; padding: 18px 40px; border-radius: 30px; font-size: 14px; font-weight: 600; letter-spacing: 1px;">
+                      BOOK &amp; CLAIM DISCOUNT
                     </a>
                   </td>
                 </tr>
@@ -554,10 +568,10 @@ export const defaultTemplates = [
 
           <!-- Footer -->
           <tr>
-            <td style="background: linear-gradient(135deg, #2a1515 0%, #1a0a0a 100%); padding: 30px 20px; text-align: center; border-radius: 0 0 16px 16px;">
+            <td style="background-color: #000000; padding: 30px 20px; text-align: center; border-radius: 0 0 16px 16px;">
               ${LOGO_HTML_SMALL}
-              <p style="margin: 15px 0; color: #cccccc; font-size: 11px;">Dubai Design District, Dubai, UAE</p>
-              <a href="${WEBSITE_URL}/unsubscribe" style="color: #c9a962; font-size: 11px; text-decoration: underline;">Unsubscribe</a>
+              <p style="margin: 15px 0; color: #888888; font-size: 11px;">Dubai Design District, Dubai, UAE</p>
+              <a href="${WEBSITE_URL}/unsubscribe" style="color: #ea1515; font-size: 11px; text-decoration: none;">Unsubscribe</a>
             </td>
           </tr>
 

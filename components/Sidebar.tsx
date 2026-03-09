@@ -17,11 +17,13 @@ import {
   Database,
   Menu,
   X,
+  CalendarCheck,
 } from 'lucide-react';
 
 const navigation = [
   { name: 'Dashboard', href: '/dashboard', icon: LayoutDashboard },
   { name: 'Leads', href: '/leads', icon: Users },
+  { name: 'Meetings', href: '/meetings', icon: CalendarCheck },
   { name: 'Scraping', href: '/scraping', icon: Search },
   { name: 'Campaigns', href: '/campaigns', icon: Mail },
   { name: 'Templates', href: '/templates', icon: FileText },
