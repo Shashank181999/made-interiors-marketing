@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { supabase, isSupabaseConfigured } from '@/lib/supabase';
+import { supabaseAdmin, isSupabaseConfigured } from '@/lib/supabase';
 import { runAllScrapers, scrapeGoogleMaps, scrapeInstagram, getAllLeads, getLeadsCount, SEARCH_CATEGORIES } from '@/lib/scraper';
 
 // API endpoint to trigger lead scraping
@@ -31,14 +31,14 @@ export async function POST(request: NextRequest) {
       for (const lead of leads) {
         if (lead.email) {
           // Check if lead already exists
-          const { data: existing } = await supabase
+          const { data: existing } = await supabaseAdmin
             .from('leads')
             .select('id')
             .eq('email', lead.email)
             .single();
 
           if (!existing) {
-            const { error } = await supabase.from('leads').insert({
+            const { error } = await supabaseAdmin.from('leads').insert({
               name: lead.name || lead.company,
               email: lead.email,
               phone: lead.phone || null,

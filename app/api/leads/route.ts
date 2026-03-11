@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { supabase, isSupabaseConfigured } from '@/lib/supabase';
+import { supabaseAdmin, isSupabaseConfigured } from '@/lib/supabase';
 
 // Demo data for when Supabase is not configured
 const demoLeads = [
@@ -10,7 +10,7 @@ const demoLeads = [
 export async function GET() {
   try {
     if (isSupabaseConfigured()) {
-      const { data, error } = await supabase
+      const { data, error } = await supabaseAdmin
         .from('leads')
         .select('*')
         .order('created_at', { ascending: false });
@@ -31,7 +31,7 @@ export async function POST(request: NextRequest) {
     const body = await request.json();
 
     if (isSupabaseConfigured()) {
-      const { data, error } = await supabase
+      const { data, error } = await supabaseAdmin
         .from('leads')
         .insert({
           name: body.name,
@@ -73,7 +73,7 @@ export async function PUT(request: NextRequest) {
     const { id, ...updates } = body;
 
     if (isSupabaseConfigured()) {
-      const { data, error } = await supabase
+      const { data, error } = await supabaseAdmin
         .from('leads')
         .update({ ...updates, updated_at: new Date().toISOString() })
         .eq('id', id)
@@ -97,7 +97,7 @@ export async function DELETE(request: NextRequest) {
     const id = searchParams.get('id');
 
     if (isSupabaseConfigured() && id) {
-      const { error } = await supabase
+      const { error } = await supabaseAdmin
         .from('leads')
         .delete()
         .eq('id', id);
