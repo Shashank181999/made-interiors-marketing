@@ -1,12 +1,28 @@
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
+import { validateApiKey, unauthorizedResponse } from '@/lib/auth';
 import { supabaseAdmin, isSupabaseConfigured } from '@/lib/supabase';
 
-export async function POST(request: Request) {
+export async function POST(request: NextRequest) {
+  // Validate API key - optimization requires authentication
+  const auth = validateApiKey(request);
+  if (!auth.valid) {
+    return unauthorizedResponse(auth.error);
+  }
+
   try {
     const { action } = await request.json();
 
     if (!isSupabaseConfigured()) {
       return NextResponse.json({ error: 'Supabase not configured' }, { status: 400 });
+    }
+
+    // Validate action parameter
+    const validActions = ['all', 'email_logs', 'duplicates', 'cold_leads', 'failed_emails', 'old_campaigns'];
+    if (action && !validActions.includes(action)) {
+      return NextResponse.json(
+        { error: `Invalid action. Valid actions: ${validActions.join(', ')}` },
+        { status: 400 }
+      );
     }
 
     const results: Record<string, any> = {};
@@ -117,7 +133,13 @@ export async function POST(request: Request) {
 }
 
 // GET: Check current data usage
-export async function GET() {
+export async function GET(request: NextRequest) {
+  // Validate API key
+  const auth = validateApiKey(request);
+  if (!auth.valid) {
+    return unauthorizedResponse(auth.error);
+  }
+
   try {
     if (!isSupabaseConfigured()) {
       return NextResponse.json({ error: 'Supabase not configured' }, { status: 400 });

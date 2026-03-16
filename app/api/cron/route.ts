@@ -1,14 +1,16 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { validateCronSecret, unauthorizedResponse } from '@/lib/auth';
 
 // This endpoint is called by Vercel Cron to run automation tasks
 // Add to vercel.json: { "crons": [{ "path": "/api/cron", "schedule": "0 6 * * *" }] }
 
 export async function GET(request: NextRequest) {
-  // Verify cron secret in production
-  // const authHeader = request.headers.get('authorization');
-  // if (authHeader !== `Bearer ${process.env.CRON_SECRET}`) {
-  //   return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
-  // }
+  // Verify cron secret - REQUIRED for security
+  const auth = validateCronSecret(request);
+  if (!auth.valid) {
+    console.warn('Unauthorized cron access attempt:', auth.error);
+    return unauthorizedResponse(auth.error);
+  }
 
   const results = {
     timestamp: new Date().toISOString(),
@@ -44,7 +46,7 @@ export async function GET(request: NextRequest) {
   }
 }
 
-// For manual trigger
+// For manual trigger (also requires authentication)
 export async function POST(request: NextRequest) {
   return GET(request);
 }

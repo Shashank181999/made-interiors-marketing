@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { validateApiKey, unauthorizedResponse, checkRateLimit, getClientIp } from '@/lib/auth';
 import { supabase, isSupabaseConfigured } from '@/lib/supabase';
 import { Meeting, demoMeetings, defaultAvailability } from '@/lib/meetings';
 
@@ -7,6 +8,12 @@ let localMeetings: Meeting[] = [...demoMeetings];
 
 // GET - Fetch all meetings or check availability
 export async function GET(request: NextRequest) {
+  // Validate API key for listing meetings
+  const auth = validateApiKey(request);
+  if (!auth.valid) {
+    return unauthorizedResponse(auth.error);
+  }
+
   const { searchParams } = new URL(request.url);
   const date = searchParams.get('date');
   const checkAvailability = searchParams.get('availability');
@@ -41,8 +48,19 @@ export async function GET(request: NextRequest) {
   return NextResponse.json({ meetings: localMeetings });
 }
 
-// POST - Create a new meeting
+// POST - Create a new meeting (public booking - rate limited)
 export async function POST(request: NextRequest) {
+  // Rate limit public booking endpoint
+  const clientIp = getClientIp(request);
+  const rateLimit = checkRateLimit(`meeting:${clientIp}`, 5, 3600000); // 5 bookings per hour
+
+  if (!rateLimit.allowed) {
+    return NextResponse.json(
+      { success: false, error: 'Too many booking attempts. Please try again later.' },
+      { status: 429, headers: { 'Retry-After': String(Math.ceil((rateLimit.resetTime - Date.now()) / 1000)) } }
+    );
+  }
+
   try {
     const body = await request.json();
     const { name, email, phone, company, date, time, project_type, notes, lead_id } = body;
@@ -51,6 +69,33 @@ export async function POST(request: NextRequest) {
     if (!name || !email || !date || !time) {
       return NextResponse.json(
         { success: false, error: 'Name, email, date, and time are required' },
+        { status: 400 }
+      );
+    }
+
+    // Validate email format
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      return NextResponse.json(
+        { success: false, error: 'Invalid email format' },
+        { status: 400 }
+      );
+    }
+
+    // Validate date format (YYYY-MM-DD)
+    const dateRegex = /^\d{4}-\d{2}-\d{2}$/;
+    if (!dateRegex.test(date)) {
+      return NextResponse.json(
+        { success: false, error: 'Invalid date format. Use YYYY-MM-DD' },
+        { status: 400 }
+      );
+    }
+
+    // Validate time format (HH:MM)
+    const timeRegex = /^\d{2}:\d{2}$/;
+    if (!timeRegex.test(time)) {
+      return NextResponse.json(
+        { success: false, error: 'Invalid time format. Use HH:MM' },
         { status: 400 }
       );
     }
@@ -114,8 +159,14 @@ export async function POST(request: NextRequest) {
   }
 }
 
-// PATCH - Update meeting status
+// PATCH - Update meeting status (requires authentication)
 export async function PATCH(request: NextRequest) {
+  // Validate API key
+  const auth = validateApiKey(request);
+  if (!auth.valid) {
+    return unauthorizedResponse(auth.error);
+  }
+
   try {
     const body = await request.json();
     const { id, status } = body;
@@ -123,6 +174,15 @@ export async function PATCH(request: NextRequest) {
     if (!id || !status) {
       return NextResponse.json(
         { success: false, error: 'ID and status are required' },
+        { status: 400 }
+      );
+    }
+
+    // Validate status
+    const validStatuses = ['pending', 'confirmed', 'cancelled', 'completed'];
+    if (!validStatuses.includes(status)) {
+      return NextResponse.json(
+        { success: false, error: `Invalid status. Valid values: ${validStatuses.join(', ')}` },
         { status: 400 }
       );
     }
@@ -163,8 +223,14 @@ export async function PATCH(request: NextRequest) {
   }
 }
 
-// DELETE - Cancel/delete a meeting
+// DELETE - Cancel/delete a meeting (requires authentication)
 export async function DELETE(request: NextRequest) {
+  // Validate API key
+  const auth = validateApiKey(request);
+  if (!auth.valid) {
+    return unauthorizedResponse(auth.error);
+  }
+
   const { searchParams } = new URL(request.url);
   const id = searchParams.get('id');
 
@@ -219,13 +285,17 @@ async function getBookedTimesForDate(date: string): Promise<string[]> {
 
 // Helper: Send confirmation emails (to lead AND admin)
 async function sendConfirmationEmail(meeting: Meeting) {
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
+  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000';
+  const apiKey = process.env.API_SECRET_KEY;
 
   // 1. Send confirmation to the LEAD
   try {
     await fetch(`${baseUrl}/api/send-email`, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: {
+        'Content-Type': 'application/json',
+        ...(apiKey ? { 'Authorization': `Bearer ${apiKey}` } : {}),
+      },
       body: JSON.stringify({
         to: meeting.email,
         subject: `Meeting Confirmed - Made Interiors Dubai`,
@@ -243,7 +313,10 @@ async function sendConfirmationEmail(meeting: Meeting) {
     try {
       await fetch(`${baseUrl}/api/send-email`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+          ...(apiKey ? { 'Authorization': `Bearer ${apiKey}` } : {}),
+        },
         body: JSON.stringify({
           to: adminEmail,
           subject: `New Meeting Booked: ${meeting.name}`,
@@ -357,8 +430,8 @@ function generateAdminNotificationHtml(meeting: Meeting): string {
   const displayHour = hour % 12 || 12;
   const formattedTime = `${displayHour}:${String(min).padStart(2, '0')} ${period}`;
 
-  const meetingsUrl = process.env.NEXT_PUBLIC_BASE_URL
-    ? `${process.env.NEXT_PUBLIC_BASE_URL}/meetings`
+  const meetingsUrl = process.env.NEXT_PUBLIC_APP_URL
+    ? `${process.env.NEXT_PUBLIC_APP_URL}/meetings`
     : 'http://localhost:3000/meetings';
 
   return `

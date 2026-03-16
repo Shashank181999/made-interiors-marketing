@@ -1,15 +1,17 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { validateCronSecret, unauthorizedResponse } from '@/lib/auth';
 import { runAllScrapers } from '@/lib/scraper';
 
 // Cron job endpoint - runs weekly to scrape new leads
 // Vercel Cron: "0 2 * * 1" (Every Monday at 2 AM UTC = 6 AM Dubai)
 
 export async function GET(request: NextRequest) {
-  // Verify cron secret in production
-  const authHeader = request.headers.get('authorization');
-  // if (authHeader !== `Bearer ${process.env.CRON_SECRET}`) {
-  //   return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
-  // }
+  // Verify cron secret - REQUIRED for security
+  const auth = validateCronSecret(request);
+  if (!auth.valid) {
+    console.warn('Unauthorized cron scrape access attempt:', auth.error);
+    return unauthorizedResponse(auth.error);
+  }
 
   console.log('=== WEEKLY LEAD SCRAPING CRON JOB ===');
   console.log('Started at:', new Date().toISOString());

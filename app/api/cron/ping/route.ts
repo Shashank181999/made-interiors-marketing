@@ -1,10 +1,18 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { validateCronSecret, unauthorizedResponse } from '@/lib/auth';
 import { supabase, isSupabaseConfigured } from '@/lib/supabase';
 
 // Daily ping to keep Supabase free tier active
 // Runs every day - prevents 7-day inactivity pause
 
 export async function GET(request: NextRequest) {
+  // Verify cron secret - REQUIRED for security
+  const auth = validateCronSecret(request);
+  if (!auth.valid) {
+    console.warn('Unauthorized ping access attempt:', auth.error);
+    return unauthorizedResponse(auth.error);
+  }
+
   console.log('=== DAILY PING - KEEPING SUPABASE ALIVE ===');
   console.log('Time:', new Date().toISOString());
 

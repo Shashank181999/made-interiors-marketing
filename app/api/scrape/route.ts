@@ -1,12 +1,34 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { validateApiKey, unauthorizedResponse } from '@/lib/auth';
 import { supabaseAdmin, isSupabaseConfigured } from '@/lib/supabase';
-import { runAllScrapers, scrapeGoogleMaps, scrapeInstagram, getAllLeads, getLeadsCount, SEARCH_CATEGORIES } from '@/lib/scraper';
+import { scrapeGoogleMaps, scrapeInstagram, getAllLeads, getLeadsCount, SEARCH_CATEGORIES } from '@/lib/scraper';
 
 // API endpoint to trigger lead scraping
 export async function POST(request: NextRequest) {
+  // Validate API key - scraping requires authentication
+  const auth = validateApiKey(request);
+  if (!auth.valid) {
+    return unauthorizedResponse(auth.error);
+  }
+
   try {
     const body = await request.json().catch(() => ({}));
     const { source, query, location, saveToDatabase = true } = body;
+
+    // Input validation
+    if (query && typeof query !== 'string') {
+      return NextResponse.json(
+        { success: false, error: 'Invalid query parameter' },
+        { status: 400 }
+      );
+    }
+
+    if (location && typeof location !== 'string') {
+      return NextResponse.json(
+        { success: false, error: 'Invalid location parameter' },
+        { status: 400 }
+      );
+    }
 
     let leads: any[] = [];
     let message = '';
@@ -78,7 +100,13 @@ export async function POST(request: NextRequest) {
 }
 
 // GET endpoint to check scraper status
-export async function GET() {
+export async function GET(request: NextRequest) {
+  // Validate API key
+  const auth = validateApiKey(request);
+  if (!auth.valid) {
+    return unauthorizedResponse(auth.error);
+  }
+
   const totalLeads = getLeadsCount();
 
   return NextResponse.json({
